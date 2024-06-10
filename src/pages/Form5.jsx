@@ -25,7 +25,7 @@ const Form5 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="asfxia" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="asfxia" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="asfxia" className="ms-2 text-sm text-gray-900 ">
                                 Trastonos relacionados con  laasfixia
                             </label>
                         </div>
@@ -33,7 +33,7 @@ const Form5 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="malformaciones" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="malformaciones" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="malformaciones" className="ms-2 text-sm text-gray-900 ">
                                 Malformaciones
                             </label>
                         </div>
@@ -41,7 +41,7 @@ const Form5 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="prematuridad" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="prematuridad" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="prematuridad" className="ms-2 text-sm text-gray-900 ">
                                 Enfermedades relacionadas  con laprematuridad
                             </label>
                         </div>
@@ -49,7 +49,7 @@ const Form5 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="infecciones" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="infecciones" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="infecciones" className="ms-2 text-sm text-gray-900 ">
                                 Enfermedades infeccioneas
                             </label>
                         </div>
@@ -57,7 +57,7 @@ const Form5 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="otros" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="otros" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="otros" className="ms-2 text-sm text-gray-900 ">
                                 Cualquier otro trastorno no clasificado en categorías anteriores
                             </label>
                         </div>
@@ -65,7 +65,7 @@ const Form5 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="sinComorbilidades" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="sinComorbilidades" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="sinComorbilidades" className="ms-2 text-sm text-gray-900 ">
                                 Si comorbilidades
                             </label>
                         </div>

@@ -13,7 +13,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="polihidramnios" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="polihidramnios" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="polihidramnios" className="ms-2 text-sm text-gray-900 ">
                                 Madre tuvo polihidramnios
                             </label>
                         </div>
@@ -21,7 +21,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="diabetes" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="diabetes" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="diabetes" className="ms-2 text-sm text-gray-900 ">
                                 Madre diabética
                             </label>
                         </div>
@@ -29,7 +29,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="hipertension" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="hipertension" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="hipertension" className="ms-2 text-sm text-gray-900 ">
                                 Madre con trastornos hipertensivos
                             </label>
                         </div>
@@ -37,7 +37,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="fallece" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="fallece" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="fallece" className="ms-2 text-sm text-gray-900 ">
                                 Madre fallece posterior al parto
                             </label>
                         </div>
@@ -45,7 +45,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="ivu" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="ivu" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="ivu" className="ms-2 text-sm text-gray-900 ">
                                 Madre tuvo IVU en el embarazo
                             </label>
                         </div>
@@ -53,7 +53,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="streptococus" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="streptococus" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="streptococus" className="ms-2 text-sm text-gray-900 ">
                                 Madre tuvo cultivo positivo para Streptococus
                             </label>
                         </div>
@@ -66,7 +66,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="menor15" type="radio" value="" name="edadMadre" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="menor15" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="menor15" className="ms-2 text-sm text-gray-900 ">
                                 Menor de 15 años
                             </label>
                         </div>
@@ -74,7 +74,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="mayor40" type="radio" value="" name="edadMadre" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="mayor40" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="mayor40" className="ms-2 text-sm text-gray-900 ">
                                 Mayor de 40 años
                             </label>
                         </div>
@@ -87,7 +87,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="alcohol" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="alcohol" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="alcohol" className="ms-2 text-sm text-gray-900 ">
                                 Alcohol
                             </label>
                         </div>
@@ -95,7 +95,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="cocaina" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="cocaina" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="cocaina" className="ms-2 text-sm text-gray-900 ">
                                 Cocaína
                             </label>
                         </div>
@@ -105,7 +105,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="ninoMasculino" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="ninoMasculino" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="ninoMasculino" className="ms-2 text-sm text-gray-900 ">
                                 Niño de sexo masculino
                             </label>
                         </div>
@@ -113,7 +113,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="riesgoSocial" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="riesgoSocial" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="riesgoSocial" className="ms-2 text-sm text-gray-900 ">
                                 Madre con riesgo soial (analfabetism, adicciones, violencia doméstica, vivieda muy lejana a un establecimiento de salud, etc.)
                             </label>
                         </div>
@@ -126,7 +126,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="vih" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="vih" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="vih" className="ms-2 text-sm text-gray-900 ">
                                 VIH
                             </label>
                         </div>
@@ -134,7 +134,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="sifilis" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="sifilis" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="sifilis" className="ms-2 text-sm text-gray-900 ">
                                 Sífilis
                             </label>
                         </div>
@@ -142,7 +142,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="tuberculosis" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="tuberculosis" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="tuberculosis" className="ms-2 text-sm text-gray-900 ">
                                 Tuberculosis
                             </label>
                         </div>
@@ -150,7 +150,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="discapacidades" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="discapacidades" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="discapacidades" className="ms-2 text-sm text-gray-900 ">
                                 Discapacidades
                             </label>
                         </div>
@@ -160,7 +160,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="partoDomicilio" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="partoDomicilio" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="partoDomicilio" className="ms-2 text-sm text-gray-900 ">
                                 Parto en domicilio o por personal no entrenado
                             </label>
                         </div>
@@ -168,7 +168,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="controlPrenatal" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="controlPrenatal" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="controlPrenatal" className="ms-2 text-sm text-gray-900 ">
                                 Ningún control prenatal
                             </label>
                         </div>
@@ -176,7 +176,7 @@ const Form3 = () => {
                             <div className="min-w-6 flex items-center">
                                 <input id="embarazoMultiple" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             </div>
-                            <label htmlFor="embarazoMultiple" className="ms-2 text-sm text-gray-900 dark:text-gray-300">
+                            <label htmlFor="embarazoMultiple" className="ms-2 text-sm text-gray-900 ">
                                 Embarazo múltiple
                             </label>
                         </div>
