@@ -92,26 +92,26 @@ const Resultados = () => {
             (!formularioCinco && !formularioSeis)
               ?
               <PDFDownloadLink document={<RiesgoInminente formulario={formularioUno} score={resultado} rango={rango} formularioDos={formularioDos} />} fileName={`Score-${formularioUno.apellidoMaterno}-Riesgo-Inminente.pdf`}>
-                <button type="submit" className="primary-Btn" onClick={()=>setShowNuevaEvaluacion(true)}>Descargar PDF completo Inminente</button>
+                <button type="submit" className="primary-Btn" onClick={()=>setShowNuevaEvaluacion(true)}>Descargar PDF Completo</button>
               </PDFDownloadLink>
               :resultado >= 77
               ?
               <PDFDownloadLink document={<RiesgoA formularioUno={formularioUno} formularioTres={formularioTres} formularioCuatro={formularioCuatro} formularioCinco={formularioCinco} formularioSeis={formularioSeis} score={resultado} rango={rango} />} fileName={`Score-${formularioUno.apellidoMaterno}-Riesgo-A.pdf`}>
-                <button type="submit" className="primary-Btn" onClick={()=>setShowNuevaEvaluacion(true)}>Descargar PDF completo A</button>
+                <button type="submit" className="primary-Btn" onClick={()=>setShowNuevaEvaluacion(true)}>Descargar PDF Completo</button>
               </PDFDownloadLink>
               : (resultado >= 72 && resultado < 77)
               ?
               <PDFDownloadLink document={<RiesgoB formularioUno={formularioUno} formularioTres={formularioTres} formularioCuatro={formularioCuatro} formularioCinco={formularioCinco} formularioSeis={formularioSeis} score={resultado} rango={rango} />} fileName={`Score-${formularioUno.apellidoMaterno}-Riesgo-B.pdf`}>
-                <button type="submit" className="primary-Btn" onClick={()=>setShowNuevaEvaluacion(true)}>Descargar PDF completo B</button>
+                <button type="submit" className="primary-Btn" onClick={()=>setShowNuevaEvaluacion(true)}>Descargar PDF Completo</button>
               </PDFDownloadLink>
               : (resultado >= 64 && resultado < 72)
               ?
               <PDFDownloadLink document={<RiesgoC formularioUno={formularioUno} formularioTres={formularioTres} formularioCuatro={formularioCuatro} formularioCinco={formularioCinco} formularioSeis={formularioSeis} score={resultado} rango={rango} />} fileName={`Score-${formularioUno.apellidoMaterno}-Riesgo-C.pdf`}>
-                <button type="submit" className="primary-Btn" onClick={()=>setShowNuevaEvaluacion(true)}>Descargar PDF completo C</button>
+                <button type="submit" className="primary-Btn" onClick={()=>setShowNuevaEvaluacion(true)}>Descargar PDF Completo</button>
               </PDFDownloadLink>
               :
               <PDFDownloadLink document={<RiesgoD formularioUno={formularioUno} formularioTres={formularioTres} formularioCuatro={formularioCuatro} formularioCinco={formularioCinco} formularioSeis={formularioSeis} score={resultado} rango={rango} />} fileName={`Score-${formularioUno.apellidoMaterno}-Riesgo-D.pdf`}>
-                <button type="submit" className="primary-Btn" onClick={()=>setShowNuevaEvaluacion(true)}>Descargar PDF completo D</button>
+                <button type="submit" className="primary-Btn" onClick={()=>setShowNuevaEvaluacion(true)}>Descargar PDF Completo</button>
               </PDFDownloadLink>
           }
           <button onClick={handleBack} className="secondary-Btn">Regresar al formulario</button>
