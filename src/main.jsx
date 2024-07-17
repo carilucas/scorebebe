@@ -9,8 +9,9 @@ import Form1 from './pages/Form1.jsx'
 import Form2 from './pages/Form2.jsx'
 import Form3 from './pages/Form3.jsx'
 import Form4 from './pages/Form4.jsx'
-import Form5 from './pages/Form5.jsx'
+import Page5 from './pages/Page5.jsx'
 import FormProvider from './context/FormProvider.jsx'
+import Resultados from './pages/Resultados.jsx'
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,8 @@ const router = createBrowserRouter([
       { path: 'paso-dos', element: <Form2 /> },
       { path: 'paso-tres', element: <Form3 /> },
       { path: 'paso-cuatro', element: <Form4 /> },
-      { path: 'paso-cinco', element: <Form5 /> },
+      { path: 'paso-cinco', element: <Page5 /> },
+      { path: 'resultados', element: <Resultados /> },
     ]
   }
 ])

@@ -1,81 +1,167 @@
 import { useNavigate } from "react-router-dom"
-import Container from "../components/Container"
+import { useForm } from "react-hook-form";
+import { useContext, useEffect } from "react";
+import { FormContext } from "../context/FormContext";
+import { types } from "../types/types.d";
+import { useComorbilidadesGroup } from "../hooks/useComorbilidadesGroup";
+import { score } from "../helpers/score";
+
+
+
 
 const Form5 = () => {
     const navigate = useNavigate();
+    const { formState, dispatch } = useContext(FormContext);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('formStorage', JSON.stringify( formState ));
+    }, [])
+
+    useEffect(() => {
+        if (formState.formularioCinco) {
+            const { asfixia, malformaciones, prematuridad, infecciosas, otros, sinComorbilidades } = formState.formularioCinco;
+            setValue('formularioCinco', { asfixia, malformaciones, prematuridad, infecciosas, otros, sinComorbilidades });
+        }
+
+    }, []);
+
+    const handleSinComorbilidades = () => {
+        const [sinComorbilidades] = getValues(['formularioCinco.sinComorbilidades'])
+        if (sinComorbilidades === false) {
+            setValue('formularioCinco', {
+                asfixia: false,
+                malformaciones: false,
+                prematuridad: false,
+                infecciosas: false,
+                otros: false,
+                sinComorbilidades: true
+            })
+        }
+    }
+
+    const handleComorbilidades = () => {
+        setValue('formularioCinco.sinComorbilidades', false);
+    }
+
+
+    const { formState: { isValid }, register, handleSubmit, setValue, getValues, watch } = useForm({
+        defaultValues: {
+            formularioCinco: {
+                asfixia: false,
+                malformaciones: false,
+                prematuridad: false,
+                infecciosas: false,
+                otros: false,
+                sinComorbilidades: true,
+            }
+        }
+    });
+
+    const handleBack = ()=>{
+        navigate('/paso-cuatro');
+        dispatch({
+            type: types.form5Type,
+            payload: getValues()
+        })
+    }
+
+    const onSubmit = (values) => {
+
+        const resultado = useComorbilidadesGroup(values)
+        if (isValid) {
+            dispatch({
+                type: types.form5Type,
+                payload: { formularioCinco: resultado }
+            })
+            dispatch({
+                type:types.form6Type,
+                payload:{formularioSeis:false}
+            })
+        }
+        navigate('/resultados')
+        
+    }
+
     return (
         <>
-            <Container>
-                <h1 className='text-gray-900 mb-4 font-bold text-lg'>Comorbilidades</h1>
-                <form className="w-full max-w-lg" >
-                    <div className="mb-6 ">
-                        <div className="mb-6">
-                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="codigos">
-                                Ingrese los códigos de acuerdo al CIE10 (Separe cada código con una COMA).
-                            </label>
-                            <textarea id="codigos" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ej.: P24,P241,P48"></textarea>
-                            <span className="text-[11px] text-red-800 bg-red-200 block mt-2 py-1 px-2 rounded-sm leading-3">El campo no puede estar vacío.</span>
-                            <div className="flex justify-between mt-6">
-                                <button onClick={() => navigate('/paso-dos')} type="submit" className="primary-Btn">Aceptar</button>
-                                <button onClick={() => navigate('/paso-cuatro')} className="primary-Btn">Ver lista de códigos CIE10</button>
-                            </div>
+            <form className="w-full max-w-lg" onSubmit={handleSubmit(onSubmit)}>
+                <div className="mb-6">
+                    <h1 className='text-gray-900 mb-4 font-bold text-lg'>Elija el grupo de comorbilidades neonatales a continuación:</h1>
+                    <div className="flex items-center mb-4">
+                        <div className="min-w-6 flex items-center">
+                            <input id="asfxia" type="checkbox" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                {...register('formularioCinco.asfixia')}
+                                onChange={handleComorbilidades}
+                            />
                         </div>
-                        <h1 className='text-gray-900 mb-4 font-bold text-lg'>O elija el grupo de comorbilidades neonatales a continuación:</h1>
-                        <div className="flex items-center mb-4">
-                            <div className="min-w-6 flex items-center">
-                                <input id="asfxia" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            </div>
-                            <label htmlFor="asfxia" className="ms-2 text-sm text-gray-900 ">
-                                Trastonos relacionados con  laasfixia
-                            </label>
-                        </div>
-                        <div className="flex items-center mb-4">
-                            <div className="min-w-6 flex items-center">
-                                <input id="malformaciones" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            </div>
-                            <label htmlFor="malformaciones" className="ms-2 text-sm text-gray-900 ">
-                                Malformaciones
-                            </label>
-                        </div>
-                        <div className="flex items-center mb-4">
-                            <div className="min-w-6 flex items-center">
-                                <input id="prematuridad" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            </div>
-                            <label htmlFor="prematuridad" className="ms-2 text-sm text-gray-900 ">
-                                Enfermedades relacionadas  con laprematuridad
-                            </label>
-                        </div>
-                        <div className="flex items-center mb-4">
-                            <div className="min-w-6 flex items-center">
-                                <input id="infecciones" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            </div>
-                            <label htmlFor="infecciones" className="ms-2 text-sm text-gray-900 ">
-                                Enfermedades infeccioneas
-                            </label>
-                        </div>
-                        <div className="flex items-center mb-4">
-                            <div className="min-w-6 flex items-center">
-                                <input id="otros" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            </div>
-                            <label htmlFor="otros" className="ms-2 text-sm text-gray-900 ">
-                                Cualquier otro trastorno no clasificado en categorías anteriores
-                            </label>
-                        </div>
-                        <div className="flex items-center mb-8">
-                            <div className="min-w-6 flex items-center">
-                                <input id="sinComorbilidades" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            </div>
-                            <label htmlFor="sinComorbilidades" className="ms-2 text-sm text-gray-900 ">
-                                Si comorbilidades
-                            </label>
-                        </div>
+                        <label htmlFor="asfxia" className="ms-2 text-sm text-gray-900 ">
+                            Trastornos relacionados con la asfixia
+                        </label>
                     </div>
-                    <div className="flex justify-between">
-                        <button onClick={() => navigate('/paso-dos')} type="submit" className="primary-Btn">Ver Resultado</button>
-                        <button onClick={() => navigate('/paso-cuatro')} className="secondary-Btn">Regresar al paso 4</button>
+                    <div className="flex items-center mb-4">
+                        <div className="min-w-6 flex items-center">
+                            <input id="malformaciones" type="checkbox" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                {...register('formularioCinco.malformaciones')}
+                                onChange={handleComorbilidades}
+                            />
+                        </div>
+                        <label htmlFor="malformaciones" className="ms-2 text-sm text-gray-900 ">
+                            Malformaciones
+                        </label>
                     </div>
-                </form>
-            </Container>
+                    <div className="flex items-center mb-4">
+                        <div className="min-w-6 flex items-center">
+                            <input id="prematuridad" type="checkbox" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                {...register('formularioCinco.prematuridad')}
+                                onChange={handleComorbilidades}
+                            />
+                        </div>
+                        <label htmlFor="prematuridad" className="ms-2 text-sm text-gray-900 ">
+                            Enfermedades relacionadas  con la prematuridad
+                        </label>
+                    </div>
+                    <div className="flex items-center mb-4">
+                        <div className="min-w-6 flex items-center">
+                            <input id="infecciones" type="checkbox" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                {...register('formularioCinco.infecciosas')}
+                                onChange={handleComorbilidades}
+                            />
+                        </div>
+                        <label htmlFor="infecciones" className="ms-2 text-sm text-gray-900 ">
+                            Enfermedades infecciosas
+                        </label>
+                    </div>
+                    <div className="flex items-center mb-4">
+                        <div className="min-w-6 flex items-center">
+                            <input id="otros" type="checkbox" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                {...register('formularioCinco.otros')}
+                                onChange={handleComorbilidades}
+                            />
+                        </div>
+                        <label htmlFor="otros" className="ms-2 text-sm text-gray-900 ">
+                            Cualquier otro trastorno no clasificado en categorías anteriores
+                        </label>
+                    </div>
+                    <div className="flex items-center mb-8">
+                        <div className="min-w-6 flex items-center">
+                            <input id="sinComorbilidades" type="checkbox" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                {...register('formularioCinco.sinComorbilidades')}
+                                onChange={handleSinComorbilidades}
+                            />
+                        </div>
+                        <label htmlFor="sinComorbilidades" className="ms-2 text-sm text-gray-900 ">
+                            Si comorbilidades
+                        </label>
+                    </div>
+                </div>
+                <div className="flex flex-col md:flex-row justify-between gap-5">
+                    <button type="submit" className="primary-Btn">Ver Resultado</button>
+                    <button onClick={ handleBack } className="secondary-Btn">Regresar al paso 4</button>
+                </div>
+            </form>
         </>
     )
 }
