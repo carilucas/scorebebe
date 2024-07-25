@@ -92,12 +92,12 @@ const Form5 = () => {
                     <h1 className='text-gray-900 mb-4 font-bold text-lg'>Elija el grupo de comorbilidades neonatales a continuación:</h1>
                     <div className="flex items-center mb-4">
                         <div className="min-w-6 flex items-center">
-                            <input id="asfxia" type="checkbox" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            <input id="asfixia" type="checkbox" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                 {...register('formularioCinco.asfixia')}
                                 onChange={handleComorbilidades}
                             />
                         </div>
-                        <label htmlFor="asfxia" className="ms-2 text-sm text-gray-900 ">
+                        <label htmlFor="asfixia" className="ms-2 text-sm text-gray-900 ">
                             Trastornos relacionados con la asfixia
                         </label>
                     </div>
@@ -153,7 +153,7 @@ const Form5 = () => {
                             />
                         </div>
                         <label htmlFor="sinComorbilidades" className="ms-2 text-sm text-gray-900 ">
-                            Si comorbilidades
+                            Sin comorbilidades
                         </label>
                     </div>
                 </div>

@@ -132,7 +132,7 @@ const Form1 = () => {
                                 {...register('formularioUno.horaNacimiento', {
                                     required: {
                                         value: true,
-                                        message: 'Por favor ingrese lahora de nacimiento del neonato.'
+                                        message: 'Por favor ingrese la hora de nacimiento del neonato.'
                                     }
                                 })}
                             />
@@ -191,7 +191,7 @@ const Form1 = () => {
                                     },
                                     validate: (value) => {
                                         if (value < 400) {
-                                            return 'El peso del neonato deb ser mayor.'
+                                            return 'El peso del neonato debe ser mayor.'
                                         }
                                         return true
                                     }
@@ -231,7 +231,7 @@ const Form1 = () => {
                                 className="appearance-none border border-gray-200 rounded w-60 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="edadGestacionalDias"
                                 type="text"
-                                placeholder="dias"
+                                placeholder="días"
                                 {...register('formularioUno.edadGestacional2', {
                                     pattern: {
                                         value: /^([0-6])*$/,
@@ -245,11 +245,11 @@ const Form1 = () => {
                             />
                             {
                                 errors.formularioUno?.edadGestacional1 &&
-                                <span className="text-[11px] tstar vacío.ext-red-800 bg-red-200 block mt-2 py-1 px-2 rounded-sm leading-3">{errors.formularioUno?.edadGestacional1.message}</span>
+                                <span className="text-[11px] vacío.ext-red-800 bg-red-200 block mt-2 py-1 px-2 rounded-sm leading-3">{errors.formularioUno?.edadGestacional1.message}</span>
                             }
                             {
                                 errors.formularioUno?.edadGestacional2 &&
-                                <span className="text-[11px] tstar vacío.ext-red-800 bg-red-200 block mt-2 py-1 px-2 rounded-sm leading-3">{errors.formularioUno?.edadGestacional2.message}</span>
+                                <span className="text-[11px] vacío.ext-red-800 bg-red-200 block mt-2 py-1 px-2 rounded-sm leading-3">{errors.formularioUno?.edadGestacional2.message}</span>
                             }
                         </div>
                         <div className="w-full mb-6">
