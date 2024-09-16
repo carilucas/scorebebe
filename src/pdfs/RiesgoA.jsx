@@ -1,10 +1,22 @@
 import { Document, Font, Image, Link, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import { format } from "@formkit/tempo";
 import logoScoreBlanco from '../../public/03-scorebebe_logo.png';
 import logoPuceBlanco from '../../public/02-PUCE-Blanco-V.png';
 import logoIspBlanco from '../../public/04-isp-horizontal_blanco.png';
+import warning from '../../public/01-warning.png';
+import caution from '../../public/02-caution.png';
+import safety from '../../public/03-safety.png';
 import RobotoLight from '../fonts/Roboto/Roboto-Light.ttf';
 import RobotoRegular from '../fonts/Roboto/Roboto-Regular.ttf';
 import RobotoBold from '../fonts/Roboto/Roboto-Bold.ttf';
+import { edadActual } from "../helpers/edadActual";
+import EdadGestacionalPdf from "../components/pdf/EdadGestacionalPdf";
+import PesoPdf from "../components/pdf/PesoPdf";
+import CentilPdf from "../components/pdf/CentilPdf";
+import ApgarPdf from "../components/pdf/ApgarPdf";
+import PartoPdf from "../components/pdf/PartoPdf";
+import FormularioCinco from "../components/pdf/FormularioCinco";
+import FormularioSeis from "../components/pdf/FormularioSeis";
 
 
 Font.register({
@@ -13,6 +25,10 @@ Font.register({
         { src: RobotoRegular, fontWeight: 400 },
         { src: RobotoBold },
     ]
+});
+Font.registerHyphenationCallback(word => {
+    // Return entire word as unique part
+    return [word];
 });
 
 const styles = StyleSheet.create({
@@ -79,7 +95,7 @@ const styles = StyleSheet.create({
         marginBottom: '10px'
     },
     circle: {
-        border: '4px solid #60a5fa',
+        border: '4px solid #991b1b',
         borderRadius: '50%',
         width: '100px',
         height: '100px',
@@ -89,18 +105,21 @@ const styles = StyleSheet.create({
     }
 })
 
-const RiesgoA = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {}, formularioCinco = {}, formularioSeis = {}, score = 0, rango = '', }) => {
+const RiesgoA = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {}, formularioCinco = {}, formularioSeis = {}, score = 0 }) => {
 
-    const dias = formularioUno.edadGestacional2 === '' ? 0 : formularioUno.edadGestacional2;
+    const fechaReporte = format(new Date(),{date:'full',time:'short'});
     const showFormTresTitle = Object.values(formularioTres).find(value => value === true);
     const showFormCuatroTitle = Object.values(formularioCuatro).find(value => value === true);
 
+    const fechaActual = new Date();
+    const fechaHoraNacimiento = `${formularioUno.fechaNacimiento} ${formularioUno.horaNacimiento}`;
+    const fechaNacimiento = new Date(fechaHoraNacimiento) ;
 
 
     return (
         <Document>
             <Page size={'A4'} style={styles.page}>
-                <View style={styles.header}>
+                <View style={styles.header} fixed>
                     <View>
                         <Image src={logoScoreBlanco} style={{ width: '85px', height: '70px' }} />
                     </View>
@@ -110,45 +129,71 @@ const RiesgoA = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                     </View>
                 </View>
                 <View style={{ marginTop: '10px', padding: '20px' }}>
-                    <Text style={styles.h1}>Categoría A de riesgo y primer nivel o segundo nivel</Text>
+                    <Text style={styles.h1}>Score Bebé y Reporte del Neonato</Text>
                     <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px' }}>
                         <View style={{ flex: '1' }}>
-                            <Text style={styles.h2}>Datos del Neonato</Text>
-                            <View style={styles.infoItem}>
-                                <Text style={styles.h3}>Apellido Materno: </Text><Text style={styles.h4}>{formularioUno?.apellidoMaterno}</Text>
+                            <Text style={styles.h2}>Categoría de riesgo A</Text>
+                            <View>
+                                <Image src={warning} style={{ width: '85px', height: '70px' }} />
+                            </View>
+                            <View >
+                                <Text style={styles.h3}>Alto riesgo </Text><Text style={styles.p}>de muerte neonatal pues tiene un puntaje ≥ 77 puntos.</Text>
                             </View>
                             <View style={styles.infoItem}>
-                                <Text style={styles.h3}>Sexo: </Text><Text style={styles.h4}>{formularioUno?.sexo}</Text>
+                                <Text style={styles.p}>Tiene más de cuatro veces más probabilidades de muerte neonatal que los niños de la categoría C (de bajo riesgo).</Text>
                             </View>
-                            <View style={styles.infoItem}>
-                                <Text style={styles.h3}>Peso: </Text><Text style={styles.h4}>{formularioUno?.peso} gr.</Text>
-                            </View>
-                            <View style={styles.infoItem}>
-                                <Text style={styles.h3}>Edad gestacional: </Text><Text style={styles.h4}>{formularioUno?.edadGestacional1}.{dias}</Text>
-                            </View>
-                            <View style={styles.infoItemVert}>
-                                <Text style={styles.h3}>Fecha y hora de  Nacimiento: </Text><Text style={styles.h4}>{formularioUno?.fechaNacimiento} {formularioUno.horaNacimiento}</Text>
-                            </View>
-                            <View style={styles.infoItem}>
-                                <Text style={styles.h3}>Apgar: </Text><Text style={styles.h4}>{formularioUno?.apgar}</Text>
-                            </View>
-                            <View style={styles.infoItem}>
-                                <Text style={styles.h3}>Tipo de parto: </Text><Text style={styles.h4}>{formularioUno?.tipoParto}</Text>
-                            </View>
-                            <View style={styles.infoItem}>
-                                <Text style={styles.h3}>Percentil: </Text><Text style={styles.h4}>{rango}</Text>
-                            </View>
-
                         </View>
                         <View style={{ flex: '1' }}>
                             <Text style={styles.h2} >Score del Neonato</Text>
                             <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                 <View style={styles.circle} >
-                                    <Text style={{ color: '#60a5fa', fontSize: '40px', fontWeight: 'bold' }}>{score}</Text>
+                                    <Text style={{ color: '#991b1b', fontSize: '40px', fontWeight: 'bold' }}>{score}</Text>
                                 </View>
                             </View>
                         </View>
-
+                    </View>
+                    <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px' }}>
+                        <View style={{ flex: '1' }}>
+                            <Text style={styles.h2}>Datos del Neonato</Text>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h3}>Fecha y hora del informe: </Text><Text style={styles.h4}>{fechaReporte}</Text>
+                            </View>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h4}>Recién Nacido </Text><Text style={styles.h3}>{formularioUno?.apellidoMaterno}</Text>
+                            </View>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h3}>Sexo: </Text><Text style={styles.h4}>{formularioUno?.sexo}</Text>
+                            </View>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h3}>Edad Actual: </Text><Text style={styles.h4}>{ edadActual(fechaActual,fechaNacimiento)}</Text>
+                            </View>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h3}>Clasificación clínica de la edad gestacional: </Text>
+                            </View>
+                            <View style={styles.infoItem}>
+                                <EdadGestacionalPdf edadGestacional1={formularioUno?.edadGestacional1} edadGestacional2={formularioUno?.edadGestacional2} />
+                            </View>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h3}>Peso al nacer: </Text>
+                                <PesoPdf peso={ formularioUno?.peso } />
+                            </View>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h3}>Centil de peso al nacer para edad gestacional: </Text>
+                                <CentilPdf formularioUno={formularioUno} />
+                            </View>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h3}>Apgar a los 5': </Text>
+                                <ApgarPdf apgar={formularioUno?.apgar}/>
+                            </View>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h3}>Tipo de parto: </Text>
+                                <PartoPdf parto={formularioUno?.tipoParto}/>
+                            </View>
+                        </View>
+                    </View>
+                    <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px', marginTop: '20px' }}>
+                        <FormularioCinco formularioCinco={ formularioCinco } />
+                        <FormularioSeis formularioSeis={ formularioSeis } />
                     </View>
                     <View style={{ marginTop: '20px' }}>
                         {
@@ -310,90 +355,6 @@ const RiesgoA = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             </Text>
                         }
                     </View>
-                    {
-                        formularioCinco &&
-                    
-                    <View style={{ marginTop: '20px' }}>
-                        {
-                            !formularioCinco.sinComorbilidades &&
-                            <Text style={styles.h2} >
-                                Comorbilidades
-                            </Text>
-                        }
-                        {
-                            formularioCinco.asfixia &&
-                            <Text style={styles.h4} >
-                                Trastornos relacionados con la asfixia
-                            </Text>
-                        }
-                        {
-                            formularioCinco.malformaciones &&
-                            <Text style={styles.h4} >
-                                Malformaciones
-                            </Text>
-                        }
-                        {
-                            formularioCinco.prematuridad &&
-                            <Text style={styles.h4} >
-                                Enfermedades relacionadas con la prematuridad
-                            </Text>
-                        }
-                        {
-                            formularioCinco.infecciosas &&
-                            <Text style={styles.h4} >
-                                Enfermedades infecciosas
-                            </Text>
-                        }
-                        {
-                            formularioCinco.otros &&
-                            <Text style={styles.h4} >
-                                Trastorno no relacionado con (Asfixia, Malformaciones, Enfermedades relacionadas con la prematuridad, Enfermedades infecciosas)
-                            </Text>
-                        }
-                    </View>
-                    }
-                    {
-                        formularioSeis &&
-                    
-                    <View style={{ marginTop: '20px' }}>
-                        {
-                            !formularioSeis.sinComorbilidades &&
-                            <Text style={styles.h2} >
-                                Comorbilidades
-                            </Text>
-                        }
-                        {
-                            formularioSeis.asfixia &&
-                            <Text style={styles.h4} >
-                                Trastornos relacionados con la asfixia
-                            </Text>
-                        }
-                        {
-                            formularioSeis.malformaciones &&
-                            <Text style={styles.h4} >
-                                Malformaciones
-                            </Text>
-                        }
-                        {
-                            formularioSeis.prematuridad &&
-                            <Text style={styles.h4} >
-                                Enfermedades relacionadas con la prematuridad
-                            </Text>
-                        }
-                        {
-                            formularioSeis.infecciosas &&
-                            <Text style={styles.h4} >
-                                Enfermedades infecciosas
-                            </Text>
-                        }
-                        {
-                            formularioSeis.otros &&
-                            <Text style={styles.h4} >
-                                Trastorno no relacionado con (Asfixia, Malformaciones, Enfermedades relacionadas con la prematuridad, Enfermedades infecciosas)
-                            </Text>
-                        }
-                    </View>
-                    }
                     <View style={{ marginTop: '20px' }}>
                         <Text style={styles.h3} >
                             Descripción del caso:
@@ -408,10 +369,10 @@ const RiesgoA = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             2. Si no existe contraindicación, iniciar lactancia en la primera media hora postparto.
                         </Text>
                         <Text style={styles.p} >
-                        3. Dar antibiótico apropiado en caso de: a) rotura de membranas de &gt; 18 horas, b) flujo genital de mal olor o c) prematurez (ver las páginas 60 y 61 del AIEPI clínico (link)).
+                            3. Dar antibiótico apropiado en caso de: a) rotura de membranas de &gt; 18 horas, b) flujo genital de mal olor o c) prematurez (ver las páginas 60 y 61 del AIEPI clínico (link)).
                         </Text>
                         <Text style={styles.p} >
-                            4. Activar la gestión de la transferencia, considerando el acróstico “R.E.F.I.E.R.A.” (ver las páginas 60 y 61 del AIEPI clínico <Link src="http://186.42.188.158:8090/guias/AIEPI%20CLINICO.%20CUADROS%20DE%20PROCEDIMIENTOS.pdf" style={{color:'#60a5fa'}}> Link </Link>).
+                            4. Activar la gestión de la transferencia, considerando el acróstico “R.E.F.I.E.R.A.” (ver las páginas 60 y 61 del AIEPI clínico <Link src="http://186.42.188.158:8090/guias/AIEPI%20CLINICO.%20CUADROS%20DE%20PROCEDIMIENTOS.pdf" style={{ color: '#60a5fa' }}> Link </Link>).
                         </Text>
                         <Text style={styles.p} >
                             5. Aplicar las normas de cuidado neonatal vigentes.

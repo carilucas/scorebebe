@@ -1,10 +1,22 @@
-import { Circle, Document, Font, Image, Link, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import { Document, Font, Image, Link, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import { format } from "@formkit/tempo";
 import logoScoreBlanco from '../../public/03-scorebebe_logo.png';
 import logoPuceBlanco from '../../public/02-PUCE-Blanco-V.png';
 import logoIspBlanco from '../../public/04-isp-horizontal_blanco.png';
+import warning from '../../public/01-warning.png';
+import caution from '../../public/02-caution.png';
+import safety from '../../public/03-safety.png';
 import RobotoLight from '../fonts/Roboto/Roboto-Light.ttf';
 import RobotoRegular from '../fonts/Roboto/Roboto-Regular.ttf';
 import RobotoBold from '../fonts/Roboto/Roboto-Bold.ttf';
+import { edadActual } from "../helpers/edadActual";
+import EdadGestacionalPdf from "../components/pdf/EdadGestacionalPdf";
+import PesoPdf from "../components/pdf/PesoPdf";
+import CentilPdf from "../components/pdf/CentilPdf";
+import ApgarPdf from "../components/pdf/ApgarPdf";
+import PartoPdf from "../components/pdf/PartoPdf";
+import FormularioCinco from "../components/pdf/FormularioCinco";
+import FormularioSeis from "../components/pdf/FormularioSeis";
 
 
 Font.register({
@@ -14,10 +26,14 @@ Font.register({
         { src: RobotoBold },
     ]
 });
+Font.registerHyphenationCallback(word => {
+    // Return entire word as unique part
+    return [word];
+});
 
 const styles = StyleSheet.create({
-    page:{
-        paddingVertical:'20px'
+    page: {
+        paddingVertical: '20px'
     },
     header: {
         backgroundColor: '#60a5fa',
@@ -27,7 +43,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
-        marginTop:'-20px'
+        marginTop: '-20px'
     },
     h1: {
         fontSize: '19px',
@@ -78,27 +94,30 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         marginBottom: '10px'
     },
-    circle:{
-        border:'4px solid #60a5fa',
-        borderRadius:'50%',
-        width:'100px',
-        height:'100px',
-        display:'flex',
-        justifyContent:'center',
-        alignItems:'center'
+    circle: {
+        border: '4px solid #991b1b',
+        borderRadius: '50%',
+        width: '100px',
+        height: '100px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })
 
-const RiesgoInminente = ({ formulario = {}, score = 0, rango = '',formularioDos={} }) => {
+const RiesgoInminente = ({ formularioUno = {}, score = 0, formularioDos = {} }) => {
 
-    const dias = formulario.edadGestacional2 === '' ? 0 : formulario.edadGestacional2;
-    const showFormDosTitle = Object.values(formularioDos).find(value => value === true);
+    const fechaReporte = format(new Date(), { date: 'full', time: 'short' });
+
+    const fechaActual = new Date();
+    const fechaHoraNacimiento = `${formularioUno.fechaNacimiento} ${formularioUno.horaNacimiento}`;
+    const fechaNacimiento = new Date(fechaHoraNacimiento);
 
 
     return (
         <Document>
             <Page size={'A4'} style={styles.page}>
-                <View style={styles.header}>
+                <View style={styles.header} fixed>
                     <View>
                         <Image src={logoScoreBlanco} style={{ width: '85px', height: '70px' }} />
                     </View>
@@ -108,49 +127,67 @@ const RiesgoInminente = ({ formulario = {}, score = 0, rango = '',formularioDos=
                     </View>
                 </View>
                 <View style={{ marginTop: '10px', padding: '20px' }}>
-                    <Text style={styles.h1}>Riesgo inminente para el neonato, requiere estabilización inmediata y/o transferencia urgente</Text>
-                    <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px', marginBottom:'10px' }}>
+                    <Text style={styles.h1}>Score Bebé y Reporte del Neonato</Text>
+                    <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px', marginBottom: '10px' }}>
                         <View style={{ flex: '1' }}>
-                            <Text style={styles.h2}>Datos del Neonato</Text>
-                            <View style={styles.infoItem}>
-                                <Text style={styles.h3}>Apellido Materno: </Text><Text style={styles.h4}>{formulario?.apellidoMaterno}</Text>
+                            <Text style={styles.h2}>Riesgo inminente para el neonato</Text>
+                            <View>
+                                <Image src={warning} style={{ width: '85px', height: '70px' }} />
                             </View>
-                            <View style={styles.infoItem}>
-                                <Text style={styles.h3}>Sexo: </Text><Text style={styles.h4}>{formulario?.sexo}</Text>
+                            <View >
+                                <Text style={styles.h3}>Alto riesgo </Text><Text style={styles.p}>requiere estabilización inmediata y/o transferencia urgente</Text>
                             </View>
-                            <View style={styles.infoItem}>
-                                <Text style={styles.h3}>Peso: </Text><Text style={styles.h4}>{formulario?.peso} gr.</Text>
-                            </View>
-                            <View style={styles.infoItem}>
-                                <Text style={styles.h3}>Edad gestacional: </Text><Text style={styles.h4}>{formulario?.edadGestacional1}.{dias}</Text>
-                            </View>
-                            <View style={styles.infoItemVert}>
-                                <Text style={styles.h3}>Fecha y hora de  Nacimiento: </Text><Text style={styles.h4}>{formulario?.fechaNacimiento} {formulario.horaNacimiento}</Text>
-                            </View>
-                            <View style={styles.infoItem}>
-                                <Text style={styles.h3}>Apgar: </Text><Text style={styles.h4}>{formulario?.apgar}</Text>
-                            </View>
-                            <View style={styles.infoItem}>
-                                <Text style={styles.h3}>Tipo de parto: </Text><Text style={styles.h4}>{formulario?.tipoParto}</Text>
-                            </View>
-                            <View style={styles.infoItem}>
-                                <Text style={styles.h3}>Percentil: </Text><Text style={styles.h4}>{rango}</Text>
-                            </View>
-
                         </View>
                         <View style={{ flex: '1' }}>
                             <Text style={styles.h2} >Score del Neonato</Text>
-                            <View style={{ display:'flex', justifyContent:'center', alignItems:'center' }}>
-                                <View style={ styles.circle } >
-                                    <Text style={{ color:'#60a5fa', fontSize:'40px', fontWeight:'bold' }}>{score}</Text>
+                            <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <View style={styles.circle} >
+                                    <Text style={{ color: '#991b1b', fontSize: '40px', fontWeight: 'bold' }}>{score}</Text>
                                 </View>
                             </View>
                         </View>
-                        
                     </View>
-                    <View style={{ marginTop: '20px' }}>
+                    <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px' }}>
+                        <View style={{ flex: '1' }}>
+                            <Text style={styles.h2}>Datos del Neonato</Text>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h3}>Fecha y hora del informe: </Text><Text style={styles.h4}>{fechaReporte}</Text>
+                            </View>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h4}>Recién Nacido </Text><Text style={styles.h3}>{formularioUno?.apellidoMaterno}</Text>
+                            </View>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h3}>Sexo: </Text><Text style={styles.h4}>{formularioUno?.sexo}</Text>
+                            </View>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h3}>Edad Actual: </Text><Text style={styles.h4}>{ edadActual(fechaActual,fechaNacimiento)}</Text>
+                            </View>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h3}>Clasificación clínica de la edad gestacional: </Text>
+                            </View>
+                            <View style={styles.infoItem}>
+                                <EdadGestacionalPdf edadGestacional1={formularioUno?.edadGestacional1} edadGestacional2={formularioUno?.edadGestacional2} />
+                            </View>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h3}>Peso al nacer: </Text>
+                                <PesoPdf peso={ formularioUno?.peso } />
+                            </View>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h3}>Centil de peso al nacer para edad gestacional: </Text>
+                                <CentilPdf formularioUno={formularioUno} />
+                            </View>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h3}>Apgar a los 5': </Text>
+                                <ApgarPdf apgar={formularioUno?.apgar}/>
+                            </View>
+                            <View style={styles.infoItem}>
+                                <Text style={styles.h3}>Tipo de parto: </Text>
+                                <PartoPdf parto={formularioUno?.tipoParto}/>
+                            </View>
+                        </View>
+                    </View>
+                    <View style={{ marginTop: '60px' }}>
                         {
-                            showFormDosTitle &&
                             <Text style={styles.h2} >
                                 Factores de riesgo inminente para el neonato que requieren estabilización inmdiata y/o transferencia urgente:
                             </Text>
@@ -186,9 +223,9 @@ const RiesgoInminente = ({ formulario = {}, score = 0, rango = '',formularioDos=
                             </Text>
                         }
                         {
-                            (formularioDos.convulsiones || formularioDos.icterico || formularioDos.hipoglucemia || formularioDos.succionDebil || formularioDos.hidrorrea || formularioDos.reanimacion || formularioDos.malformaciones || formularioDos.lesionesSeveras ) &&
+                            (formularioDos.convulsiones || formularioDos.icterico || formularioDos.hipoglucemia || formularioDos.succionDebil || formularioDos.hidrorrea || formularioDos.reanimacion || formularioDos.malformaciones || formularioDos.lesionesSeveras) &&
                             <Text style={styles.h3} >
-                                Se encuentra hipnótico
+                                Se encuentra hipotónico
                             </Text>
                         }
                         {
@@ -212,7 +249,7 @@ const RiesgoInminente = ({ formulario = {}, score = 0, rango = '',formularioDos=
                         {
                             formularioDos.succionDebil &&
                             <Text style={styles.h4} >
-                               Tiene succión débil
+                                Tiene succión débil
                             </Text>
                         }
                         {
@@ -240,7 +277,8 @@ const RiesgoInminente = ({ formulario = {}, score = 0, rango = '',formularioDos=
                             </Text>
                         }
                     </View>
-                    <Text style={styles.h3} >
+                    <View style={{ marginTop: '20px' }}>
+                        <Text style={styles.h3} >
                             Descripción del caso:
                         </Text>
                         <Text style={styles.p} >
@@ -253,11 +291,12 @@ const RiesgoInminente = ({ formulario = {}, score = 0, rango = '',formularioDos=
                             2. Si no existe contraindicación, iniciar lactancia en la primera media hora postparto
                         </Text>
                         <Text style={styles.p} >
-                                3. Dar antibiótico apropiado en caso de: a) rotura de membranas de &gt; 18 horas, b) flujo genital de mal olor o c) prematurez
+                            3. Dar antibiótico apropiado en caso de: a) rotura de membranas de &gt; 18 horas, b) flujo genital de mal olor o c) prematurez
                         </Text>
                         <Text style={styles.p} >
-                            4. De no disponer de tratamiento específico, se deberá activar la gestión de la transferencia, considerando el acróstico “R.E.F.I.E.R.A.” (ver las páginas 60 y 61 del AIEPI clínico <Link src="http://186.42.188.158:8090/guias/AIEPI%20CLINICO.%20CUADROS%20DE%20PROCEDIMIENTOS.pdf" style={{color:'#60a5fa'}}> Link </Link>) aplicar las normas de cuidado neonatal vigentes
+                            4. De no disponer de tratamiento específico, se deberá activar la gestión de la transferencia, considerando el acróstico “R.E.F.I.E.R.A.” (ver las páginas 60 y 61 del AIEPI clínico <Link src="http://186.42.188.158:8090/guias/AIEPI%20CLINICO.%20CUADROS%20DE%20PROCEDIMIENTOS.pdf" style={{ color: '#60a5fa' }}> Link </Link>) aplicar las normas de cuidado neonatal vigentes
                         </Text>
+                    </View>
                 </View>
             </Page>
         </Document>

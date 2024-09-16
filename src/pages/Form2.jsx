@@ -161,7 +161,7 @@ const Form2 = () => {
                         </div>
                         <div className="mb-6">
                             <h3 className='text-gray-900 mb-4  text-md max-w-lg font-medium'>
-                                Se encuentra hipnótico
+                                Se encuentra hipotónico
                             </h3>
                             <div className="flex items-center mb-8">
                                 <div className="min-w-6 flex items-center">

@@ -23,7 +23,6 @@ const Form3 = () => {
                 mayor40: false,
                 alcohol: false,
                 cocaina: false,
-                ninoMasculino: false,
                 riesgoSocial: false,
                 vih: false,
                 sifilis: false,
@@ -44,9 +43,9 @@ const Form3 = () => {
 
     useEffect(() => {
         if (formState.formularioTres) {
-            const { polihidramnios, hipertension, fallece, ivu, streptococus, menor15, mayor40, alcohol, cocaina, ninoMasculino, riesgoSocial, vih, sifilis, tuberculosis, discapacidades, partoDomicilio, controlPrenatal, embarazoMultiple, diabetes } = formState.formularioTres;
+            const { polihidramnios, hipertension, fallece, ivu, streptococus, menor15, mayor40, alcohol, cocaina, riesgoSocial, vih, sifilis, tuberculosis, discapacidades, partoDomicilio, controlPrenatal, embarazoMultiple, diabetes } = formState.formularioTres;
 
-            setValue('formularioTres', { polihidramnios, hipertension, fallece, ivu, streptococus, menor15, mayor40, alcohol, cocaina, ninoMasculino, riesgoSocial, vih, sifilis, tuberculosis, discapacidades, partoDomicilio, controlPrenatal, embarazoMultiple, diabetes })
+            setValue('formularioTres', { polihidramnios, hipertension, fallece, ivu, streptococus, menor15, mayor40, alcohol, cocaina, riesgoSocial, vih, sifilis, tuberculosis, discapacidades, partoDomicilio, controlPrenatal, embarazoMultiple, diabetes })
         }
 
     }, [])
@@ -189,16 +188,7 @@ const Form3 = () => {
                             </div>
                         </div>
                         <div className="mb-6 border-b border-gray-70">
-                            <div className="flex items-center mb-4">
-                                <div className="min-w-6 flex items-center">
-                                    <input id="ninoMasculino" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                        {...register('formularioTres.ninoMasculino')}
-                                    />
-                                </div>
-                                <label htmlFor="ninoMasculino" className="ms-2 text-sm text-gray-900 ">
-                                    Niño de sexo masculino
-                                </label>
-                            </div>
+                            
                             <div className="flex items-center mb-4">
                                 <div className="min-w-6 flex items-center">
                                     <input id="riesgoSocial" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
