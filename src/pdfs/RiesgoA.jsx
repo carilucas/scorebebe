@@ -1,11 +1,9 @@
-import { Document, Font, Image, Link, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import { Document, Font, Image, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
 import { format } from "@formkit/tempo";
 import logoScoreBlanco from '../../public/03-scorebebe_logo.png';
 import logoPuceBlanco from '../../public/02-PUCE-Blanco-V.png';
 import logoIspBlanco from '../../public/04-isp-horizontal_blanco.png';
 import warning from '../../public/01-warning.png';
-import caution from '../../public/02-caution.png';
-import safety from '../../public/03-safety.png';
 import RobotoLight from '../fonts/Roboto/Roboto-Light.ttf';
 import RobotoRegular from '../fonts/Roboto/Roboto-Regular.ttf';
 import RobotoBold from '../fonts/Roboto/Roboto-Bold.ttf';
@@ -43,7 +41,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
-        marginTop: '-20px'
+        marginTop: '-20px',
+        marginBottom: '20px',
     },
     h1: {
         fontSize: '19px',
@@ -65,7 +64,7 @@ const styles = StyleSheet.create({
         fontSize: '16px',
         fontWeight: 'bold',
         color: '#374151',
-        fontFamily: 'Roboto'
+        fontFamily: 'Roboto',
     },
     h4: {
         fontSize: '14px',
@@ -76,7 +75,14 @@ const styles = StyleSheet.create({
     p: {
         fontSize: '13px',
         fontWeight: '400',
-        color: '#000000',
+        color: '#374151',
+        fontFamily: 'Roboto',
+        marginVertical: '5px'
+    },
+    pBold: {
+        fontSize: '13px',
+        fontWeight: 'bold',
+        color: '#374151',
         fontFamily: 'Roboto',
         marginVertical: '5px'
     },
@@ -86,6 +92,12 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         flexDirection: 'row',
         marginBottom: '10px'
+    },
+    subInfoItem: {
+        display: 'flex',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-end',
+        flexDirection: 'row',
     },
     infoItemVert: {
         display: 'flex',
@@ -128,25 +140,27 @@ const RiesgoA = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                         <Image src={logoIspBlanco} style={{ width: '129px', height: '35px' }} />
                     </View>
                 </View>
-                <View style={{ marginTop: '10px', padding: '20px' }}>
+                <View style={{ padding: '20px' }}>
                     <Text style={styles.h1}>Score Bebé y Reporte del Neonato</Text>
-                    <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px' }}>
-                        <View style={{ flex: '1' }}>
-                            <Text style={styles.h2}>Categoría de riesgo A y atiende en primer o segundo nivel de atención:</Text>
-                            <View>
-                                <Image src={warning} style={{ width: '85px', height: '70px' }} />
-                            </View>
-                            <View >
-                                <Text style={styles.p}>Categoría de riesgo A (alto riesgo)</Text><Text style={styles.h3}>TIENE UNA ENFERMEDAD MUY GRAVE; </Text><Text style={styles.p}>tiene más de cuatro veces más probabilidades de eventos adversos neonatales antes de los 15 días de vida que los niños de la categoría C (bajo riesgo). Requiere estabilización inmediata: </Text>
-                            </View>
-                        </View>
-                        <View style={{ flex: '1' }}>
-                            <Text style={styles.h2} >Score del Neonato</Text>
-                            <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                <View style={styles.circle} >
-                                    <Text style={{ color: '#991b1b', fontSize: '40px', fontWeight: 'bold' }}>{score}</Text>
+                    <View style={{ border: '1px solid #e7e5e4', padding: '20px' }}>
+                        <View style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', }}>
+                            <View style={{ flex: '1' }}>
+                                <Text style={styles.h2}>Categoría de riesgo A y atiende en primer o segundo nivel de atención:</Text>
+                                <View>
+                                    <Image src={warning} style={{ width: '85px', height: '70px' }} />
                                 </View>
                             </View>
+                            <View style={{ flex: '1' }}>
+                                <Text style={styles.h2} >Score del Neonato</Text>
+                                <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <View style={styles.circle} >
+                                        <Text style={{ color: '#991b1b', fontSize: '40px', fontWeight: 'bold' }}>{score}</Text>
+                                    </View>
+                                </View>
+                            </View>
+                        </View>
+                        <View >
+                            <Text style={styles.p}>Categoría de riesgo A (alto riesgo)</Text><Text style={styles.h3}>Tiene una enfemedadmuy grave: </Text><Text style={styles.p}>tiene más de cuatro veces más probabilidades de eventos adversos neonatales antes de los 15 días de vida que los niños de la categoría C (bajo riesgo). Requiere estabilización inmediata: </Text>
                         </View>
                     </View>
                     <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px' }}>
@@ -166,9 +180,9 @@ const RiesgoA = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             </View>
                             <View style={styles.infoItem}>
                                 <Text style={styles.h3}>Clasificación clínica de la edad gestacional: </Text>
-                            </View>
-                            <View style={styles.infoItem}>
-                                <EdadGestacionalPdf edadGestacional1={formularioUno?.edadGestacional1} edadGestacional2={formularioUno?.edadGestacional2} />
+                                <View style={styles.subInfoItem}>
+                                    <EdadGestacionalPdf edadGestacional1={formularioUno?.edadGestacional1} edadGestacional2={formularioUno?.edadGestacional2} />
+                                </View>
                             </View>
                             <View style={styles.infoItem}>
                                 <Text style={styles.h3}>Peso al nacer: </Text>
@@ -364,7 +378,7 @@ const RiesgoA = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             </Text>
                         }
                     </View>
-                    <View style={{ marginTop: '20px' }}>
+                    <View >
                         <Text style={styles.h3} >
                             Descripción del caso:
                         </Text>
@@ -383,7 +397,7 @@ const RiesgoA = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                         <Text style={styles.p} >
                             4. Activar la gestión de la transferencia, considerando el acróstico “R.E.F.I.E.R.A.”
                         </Text>
-                        <Text style={styles.h3} >
+                        <Text style={styles.h3 }>
                             Normas de estabilización y transporte para la referencia (AIEPI) (1)
                         </Text>
                         <Text style={styles.pBold} >

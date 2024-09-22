@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
-        marginTop: '-20px'
+        marginTop: '-20px',
+        marginBottom: '20px',
     },
     h1: {
         fontSize: '19px',
@@ -75,7 +76,14 @@ const styles = StyleSheet.create({
     p: {
         fontSize: '13px',
         fontWeight: '400',
-        color: '#000000',
+        color: '#374151',
+        fontFamily: 'Roboto',
+        marginVertical: '5px'
+    },
+    pBold: {
+        fontSize: '13px',
+        fontWeight: 'bold',
+        color: '#374151',
         fontFamily: 'Roboto',
         marginVertical: '5px'
     },
@@ -127,25 +135,27 @@ const RiesgoB = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                         <Image src={logoIspBlanco} style={{ width: '129px', height: '35px' }} />
                     </View>
                 </View>
-                <View style={{ marginTop: '10px', padding: '20px' }}>
+                <View style={{ padding: '20px' }}>
                     <Text style={styles.h1}>Score Bebé y Reporte del Neonato</Text>
-                    <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px' }}>
-                        <View style={{ flex: '1' }}>
-                            <Text style={styles.h2}>Categoría de riesgo B:  Moderado riesgo de muerte neonatal y atiende en primer o segundo nivel de atención:</Text>
-                            <View>
-                                <Image src={caution} style={{ width: '85px', height: '70px' }} />
-                            </View>
-                            <View >
-                                <Text style={styles.p}>Categoría de riesgo B (moderado riesgo); tiene más de un 77% más probabilidades de muerte neonatal que los niños de la categoría C (bajo riesgo). Requiere estabilización inmediata:</Text>
-                            </View>
-                        </View>
-                        <View style={{ flex: '1' }}>
-                            <Text style={styles.h2} >Score del Neonato</Text>
-                            <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                <View style={styles.circle} >
-                                    <Text style={{ color: '#ca8a04', fontSize: '40px', fontWeight: 'bold' }}>{score}</Text>
+                    <View style={{ border: '1px solid #e7e5e4', padding: '20px' }}>
+                        <View style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', }}>
+                            <View style={{ flex: '1' }}>
+                                <Text style={styles.h2}>Categoría de riesgo B:  Moderado riesgo de muerte neonatal y atiende en primer o segundo nivel de atención:</Text>
+                                <View>
+                                    <Image src={caution} style={{ width: '85px', height: '70px' }} />
                                 </View>
                             </View>
+                            <View style={{ flex: '1' }}>
+                                <Text style={styles.h2} >Score del Neonato</Text>
+                                <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <View style={styles.circle} >
+                                        <Text style={{ color: '#ca8a04', fontSize: '40px', fontWeight: 'bold' }}>{score}</Text>
+                                    </View>
+                                </View>
+                            </View>
+                        </View>
+                        <View >
+                            <Text style={styles.p}>Categoría de riesgo B (moderado riesgo); tiene más de un 77% más probabilidades de muerte neonatal que los niños de la categoría C (bajo riesgo). Requiere estabilización inmediata:</Text>
                         </View>
                     </View>
                     <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px' }}>
@@ -380,7 +390,7 @@ const RiesgoB = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             3. Dar antibiótico apropiado en caso de: a) rotura de membranas de &gt; 18 horas, b) flujo genital de mal olor o c) prematurez (ver las páginas 60 y 61 del AIEPI clínico (link)).
                         </Text>
                         <Text style={styles.p} >
-                            4. Activar la gestión de la transferencia, considerando el acróstico “R.E.F.I.E.R.A.” 
+                            4. Activar la gestión de la transferencia, considerando el acróstico “R.E.F.I.E.R.A.”
                         </Text>
                         <Text style={styles.h3} >
                             Normas de estabilización y transporte para la referencia (AIEPI) (1)

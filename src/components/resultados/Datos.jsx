@@ -50,7 +50,7 @@ const Datos = ({ resultado, formularioCinco, formularioSeis }) => {
                             <h1 className='text-gray-900 mb-4 font-bold text-lg text-center'>Categoría de riesgo D</h1>
                             <img src="/03-safety.svg" alt="" className='max-w-[160px] block mx-auto mb-5' />
                             <p className="block tracking-wide text-gray-700 text-sm font-bold mb-2">
-                                Riesgo muy bajo <span className="font-normal tracking-wide text-gray-700">de muerte neonatal pues tiene un puntaje &lt; 64 puntos.</span>
+                                Riesgo muy bajo <span className="font-normal tracking-wide text-gray-700">de muerte neonatal pues tiene un puntaje &lt; 67 puntos.</span>
                             </p>
                         </>
             }

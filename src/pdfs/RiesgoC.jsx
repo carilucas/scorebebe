@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
-        marginTop: '-20px'
+        marginTop: '-20px',
+        marginBottom: '20px',
     },
     h1: {
         fontSize: '19px',
@@ -74,7 +75,14 @@ const styles = StyleSheet.create({
     p: {
         fontSize: '13px',
         fontWeight: '400',
-        color: '#000000',
+        color: '#374151',
+        fontFamily: 'Roboto',
+        marginVertical: '5px'
+    },
+    pBold: {
+        fontSize: '13px',
+        fontWeight: 'bold',
+        color: '#374151',
         fontFamily: 'Roboto',
         marginVertical: '5px'
     },
@@ -125,27 +133,29 @@ const RiesgoC = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                         <Image src={logoIspBlanco} style={{ width: '129px', height: '35px' }} />
                     </View>
                 </View>
-                <View style={{ marginTop: '10px', padding: '20px' }}>
+                <View style={{ padding: '20px' }}>
                     <Text style={styles.h1}>Score Bebé y Reporte del Neonato</Text>
-                    <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px' }}>
-                        <View style={{ flex: '1' }}>
-                            <Text style={styles.h2}>Categoría de riesgo C: Bajo riesgo de muerte neonatal y atiende en primer o segundo nivel de atención:</Text>
-                            <View>
-                                <Image src={caution} style={{ width: '85px', height: '70px' }} />
-                            </View>
-                            <View >
-                                <Text style={styles.p}>
-                                    Categoría de riesgo C (bajo riesgo): tiene pocas probabilidades de complicaciones neonatales, pero ligeramente mayores a los niños de categoría D (muy bajo riesgo).
-                                </Text>
-                            </View>
-                        </View>
-                        <View style={{ flex: '1' }}>
-                            <Text style={styles.h2} >Score del Neonato</Text>
-                            <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                <View style={styles.circle} >
-                                    <Text style={{ color: '#ca8a04', fontSize: '40px', fontWeight: 'bold' }}>{score}</Text>
+                    <View style={{ border: '1px solid #e7e5e4', padding: '20px' }}>
+                        <View style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', }}>
+                            <View style={{ flex: '1' }}>
+                                <Text style={styles.h2}>Categoría de riesgo C: Bajo riesgo de muerte neonatal y atiende en primer o segundo nivel de atención:</Text>
+                                <View>
+                                    <Image src={caution} style={{ width: '85px', height: '70px' }} />
                                 </View>
                             </View>
+                            <View style={{ flex: '1' }}>
+                                <Text style={styles.h2} >Score del Neonato</Text>
+                                <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <View style={styles.circle} >
+                                        <Text style={{ color: '#ca8a04', fontSize: '40px', fontWeight: 'bold' }}>{score}</Text>
+                                    </View>
+                                </View>
+                            </View>
+                        </View>
+                        <View >
+                            <Text style={styles.p}>
+                                Categoría de riesgo C (bajo riesgo): tiene pocas probabilidades de complicaciones neonatales, pero ligeramente mayores a los niños de categoría D (muy bajo riesgo).
+                            </Text>
                         </View>
                     </View>
                     <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px' }}>

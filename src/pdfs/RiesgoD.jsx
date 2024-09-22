@@ -74,7 +74,14 @@ const styles = StyleSheet.create({
     p: {
         fontSize: '13px',
         fontWeight: '400',
-        color: '#000000',
+        color: '#374151',
+        fontFamily: 'Roboto',
+        marginVertical: '5px'
+    },
+    pBold: {
+        fontSize: '13px',
+        fontWeight: 'bold',
+        color: '#374151',
         fontFamily: 'Roboto',
         marginVertical: '5px'
     },
@@ -129,12 +136,12 @@ const RiesgoD = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                 <Text style={styles.h1}>Score Bebé y Reporte del Neonato</Text>
                     <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px' }}>
                         <View style={{ flex: '1' }}>
-                            <Text style={styles.h2}>Categoría de riesgo C</Text>
+                            <Text style={styles.h2}>Categoría de riesgo D</Text>
                             <View>
                                 <Image src={safety} style={{ width: '85px', height: '70px' }} />
                             </View>
                             <View >
-                                <Text style={styles.h3}>Riesgo Muy Bajo </Text><Text style={styles.p}>de muerte neonatal pues tiene un puntaje &lt; 64 puntos.</Text>
+                                <Text style={styles.h3}>Riesgo Muy Bajo </Text><Text style={styles.p}>de muerte neonatal pues tiene un puntaje &lt; 67 puntos.</Text>
                             </View>
                         </View>
                         <View style={{ flex: '1' }}>
