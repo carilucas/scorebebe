@@ -323,6 +323,12 @@ const RiesgoD = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             </Text>
                         }
                         {
+                            formularioTres.reanimacion &&
+                            <Text style={styles.h4} >
+                                Reanimación neonatal sin presión positiva ni masaje cardiaco
+                            </Text>
+                        }
+                        {
                             formularioTres.embarazoMultiple &&
                             <Text style={styles.h4} >
                                 Embarazo múltiple
@@ -346,6 +352,12 @@ const RiesgoD = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             formularioCuatro.uteroinhibicion &&
                             <Text style={styles.h4} >
                                 Es prematuro y recibió tratamiento de uteroinhibición hasta alcanzar maduración pulmonar
+                            </Text>
+                        }
+                        {
+                            formularioCuatro.madreHipertensa &&
+                            <Text style={styles.h4} >
+                                Madre con trastorno hipertensivo del embarazo sí recibió antihipertensivo y sulfato de magnesio
                             </Text>
                         }
                     </View>

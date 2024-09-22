@@ -76,7 +76,11 @@ const Resultados = () => {
       <div>
         <div className="resultados-container flex flex-col-reverse md:flex-row justify-center gap-[3rem]">
           <Datos resultado={resultado} formularioCinco={formularioCinco} formularioSeis={formularioSeis}/>
-          <Score resultado={resultado}  formularioCinco={formularioCinco} formularioSeis={formularioSeis}/>
+          {
+            (!formularioCinco && !formularioSeis) ? ''
+            :
+            <Score resultado={resultado}  formularioCinco={formularioCinco} formularioSeis={formularioSeis}/>
+          }
         </div>
         <div className="flex flex-col md:flex-row justify-between gap-5 mt-5">
           {
@@ -95,7 +99,7 @@ const Resultados = () => {
                   <PDFDownloadLink className="flex-1" document={<RiesgoB formularioUno={formularioUno} formularioTres={formularioTres} formularioCuatro={formularioCuatro} formularioCinco={formularioCinco} formularioSeis={formularioSeis} score={resultado} rango={rango} />} fileName={`Score-${formularioUno.apellidoMaterno}-Riesgo-B.pdf`}>
                     <button type="submit" className="primary-Btn w-full" >Reporte neonatal completo</button>
                   </PDFDownloadLink>
-                  : (resultado >= 64 && resultado < 72)
+                  : (resultado >= 67 && resultado < 72)
                     ?
                     <PDFDownloadLink className="flex-1" document={<RiesgoC formularioUno={formularioUno} formularioTres={formularioTres} formularioCuatro={formularioCuatro} formularioCinco={formularioCinco} formularioSeis={formularioSeis} score={resultado} rango={rango} />} fileName={`Score-${formularioUno.apellidoMaterno}-Riesgo-C.pdf`}>
                       <button type="submit" className="primary-Btn w-full" >Reporte neonatal completo</button>

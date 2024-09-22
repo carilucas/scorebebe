@@ -21,11 +21,7 @@ const Form2 = () => {
 
     useEffect(() => {
         if (formState.formularioDos) {
-            const { respiracion, saturacion, alteracionRespiratoria, alteracionRectal, convulsiones, icterico, hipoglucemia, succionDebil, hidrorrea, reanimacion, malformaciones, lesionesSeveras } = formState.formularioDos;
-
-            setValue('formularioDos', {
-                respiracion, saturacion, alteracionRespiratoria, alteracionRectal, convulsiones, icterico, hipoglucemia, succionDebil, hidrorrea, reanimacion, malformaciones, lesionesSeveras
-            })
+            setValue('formularioDos', {...formState.formularioDos})
         }
     }, [])
 
@@ -36,6 +32,7 @@ const Form2 = () => {
                 respiracion: false,
                 saturacion: false,
                 alteracionRespiratoria: false,
+                alteracionCardiaca: false,
                 alteracionRectal: false,
                 convulsiones: false,
                 icterico: false,
@@ -139,6 +136,17 @@ const Form2 = () => {
                         <div className="mb-6 border-b border-gray-70">
                             <div className="flex items-center mb-4">
                                 <div className="min-w-6 flex items-center">
+                                    <input id="alteracionCardiaca" type="checkbox" value="" className="w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                        {...register("formularioDos.alteracionCardiaca")} />
+                                </div>
+                                <label htmlFor="alteracionCardiaca" className="ms-2 text-sm text-gray-900 ">
+                                    Tiene una frecuencia cardíaca alterada {`(<100 o >160 lpm)`}
+                                </label>
+                            </div>
+                        </div>
+                        <div className="mb-6 border-b border-gray-70">
+                            <div className="flex items-center mb-4">
+                                <div className="min-w-6 flex items-center">
                                     <input id="alteracionRespiratoria" type="checkbox" value="" className="w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                         {...register("formularioDos.alteracionRespiratoria")} />
                                 </div>
@@ -161,7 +169,7 @@ const Form2 = () => {
                         </div>
                         <div className="mb-6">
                             <h3 className='text-gray-900 mb-4  text-md max-w-lg font-medium'>
-                                Se encuentra hipotónico
+                                Se encuentra hipotónico: tiene un pobre tono muscular o sus reflejos son débiles 
                             </h3>
                             <div className="flex items-center mb-8">
                                 <div className="min-w-6 flex items-center">
@@ -190,7 +198,7 @@ const Form2 = () => {
                                     />
                                 </div>
                                 <label htmlFor="hipoglucemia" className="ms-2 text-sm text-gray-900 ">
-                                    Hipoglucemia {`(<50 mg/dL)`}
+                                    Hipoglucemia {`(<40 mg/dL)`}
                                 </label>
                             </div>
                             <div className="flex items-center mb-8">
@@ -200,7 +208,7 @@ const Form2 = () => {
                                     />
                                 </div>
                                 <label htmlFor="succionDebil" className="ms-2 text-sm text-gray-900 ">
-                                    Tiene succión débil
+                                    Tiene succión débil o vomita todo lo que come.
                                 </label>
                             </div>
                             <div className="flex items-center mb-8">

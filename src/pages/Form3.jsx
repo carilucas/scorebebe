@@ -30,6 +30,7 @@ const Form3 = () => {
                 discapacidades: false,
                 partoDomicilio: false,
                 controlPrenatal: false,
+                reanimacion: false,
                 embarazoMultiple: false,
             }
         }
@@ -43,9 +44,7 @@ const Form3 = () => {
 
     useEffect(() => {
         if (formState.formularioTres) {
-            const { polihidramnios, hipertension, fallece, ivu, streptococus, menor15, mayor40, alcohol, cocaina, riesgoSocial, vih, sifilis, tuberculosis, discapacidades, partoDomicilio, controlPrenatal, embarazoMultiple, diabetes } = formState.formularioTres;
-
-            setValue('formularioTres', { polihidramnios, hipertension, fallece, ivu, streptococus, menor15, mayor40, alcohol, cocaina, riesgoSocial, vih, sifilis, tuberculosis, discapacidades, partoDomicilio, controlPrenatal, embarazoMultiple, diabetes })
+            setValue('formularioTres', { ...formState.formularioTres })
         }
 
     }, [])
@@ -103,7 +102,7 @@ const Form3 = () => {
                                     />
                                 </div>
                                 <label htmlFor="hipertension" className="ms-2 text-sm text-gray-900 ">
-                                    Madre con trastornos hipertensivos
+                                    Madre con trastornos hipertensivos o preeclámptica/eclámptica
                                 </label>
                             </div>
                             <div className="flex items-center mb-4">
@@ -264,6 +263,16 @@ const Form3 = () => {
                                 </div>
                                 <label htmlFor="controlPrenatal" className="ms-2 text-sm text-gray-900 ">
                                     Ningún control prenatal
+                                </label>
+                            </div>
+                            <div className="flex items-center mb-4">
+                                <div className="min-w-6 flex items-center">
+                                    <input id="reanimacion" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                        {...register('formularioTres.reanimacion')}
+                                    />
+                                </div>
+                                <label htmlFor="reanimacion" className="ms-2 text-sm text-gray-900 ">
+                                    Reanimación neonatal sin presión positiva ni masaje cardiaco
                                 </label>
                             </div>
                             <div className="flex items-center mb-4">

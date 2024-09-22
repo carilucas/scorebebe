@@ -16,19 +16,7 @@ const Form1 = () => {
 
     useEffect(() => {
         if (formState.formularioUno) {
-            const { sexo, fechaNacimiento, horaNacimiento, apellidoMaterno, peso, edadGestacional1, edadGestacional2, apgar, tipoParto } = formState.formularioUno;
-
-            setValue('formularioUno', {
-                sexo,
-                fechaNacimiento,
-                horaNacimiento,
-                apellidoMaterno,
-                peso,
-                edadGestacional1,
-                edadGestacional2,
-                apgar,
-                tipoParto
-            })
+            setValue('formularioUno', {...formState.formularioUno})
         }
     }, [])
 

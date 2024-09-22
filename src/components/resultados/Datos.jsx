@@ -37,12 +37,12 @@ const Datos = ({ resultado, formularioCinco, formularioSeis }) => {
                                 Tiene más de un 77% más probabilidades de muerte neonatal que los niños de la categoría C (bajo riesgo).
                             </p>
                         </>
-                    : (resultado >= 64 && resultado < 72) ?
+                    : (resultado >= 67 && resultado < 72) ?
                         <>
                             <h1 className='text-gray-900 mb-4 font-bold text-lg text-center'>Categoría de riesgo C</h1>
                             <img src="/02-caution.svg" alt="" className='max-w-[160px] block mx-auto mb-5' />
                             <p className="block tracking-wide text-gray-700 text-sm font-bold mb-2">
-                                Riesgo bajo <span className="font-normal tracking-wide text-gray-700">de muerte neonatal pues tiene un puntaje ≥ 64 y &lt; 72 puntos.</span>
+                                Riesgo bajo <span className="font-normal tracking-wide text-gray-700">de muerte neonatal pues tiene un puntaje ≥ 67 y &lt; 72 puntos.</span>
                             </p>
                         </>
                         :

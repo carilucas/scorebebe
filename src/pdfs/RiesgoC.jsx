@@ -103,20 +103,20 @@ const styles = StyleSheet.create({
     }
 })
 
-const RiesgoC = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {}, formularioCinco = {}, formularioSeis = {}, score = 0}) => {
+const RiesgoC = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {}, formularioCinco = {}, formularioSeis = {}, score = 0 }) => {
 
-    const fechaReporte = format(new Date(),{date:'full',time:'short'});
+    const fechaReporte = format(new Date(), { date: 'full', time: 'short' });
     const showFormTresTitle = Object.values(formularioTres).find(value => value === true);
     const showFormCuatroTitle = Object.values(formularioCuatro).find(value => value === true);
 
     const fechaActual = new Date();
     const fechaHoraNacimiento = `${formularioUno.fechaNacimiento} ${formularioUno.horaNacimiento}`;
-    const fechaNacimiento = new Date(fechaHoraNacimiento) ;
+    const fechaNacimiento = new Date(fechaHoraNacimiento);
 
     return (
         <Document>
             <Page size={'A4'} style={styles.page}>
-                <View style={styles.header}  fixed>
+                <View style={styles.header} fixed>
                     <View>
                         <Image src={logoScoreBlanco} style={{ width: '85px', height: '70px' }} />
                     </View>
@@ -126,15 +126,17 @@ const RiesgoC = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                     </View>
                 </View>
                 <View style={{ marginTop: '10px', padding: '20px' }}>
-                <Text style={styles.h1}>Score Bebé y Reporte del Neonato</Text>
+                    <Text style={styles.h1}>Score Bebé y Reporte del Neonato</Text>
                     <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px' }}>
                         <View style={{ flex: '1' }}>
-                            <Text style={styles.h2}>Categoría de riesgo C</Text>
+                            <Text style={styles.h2}>Categoría de riesgo C: Bajo riesgo de muerte neonatal y atiende en primer o segundo nivel de atención:</Text>
                             <View>
                                 <Image src={caution} style={{ width: '85px', height: '70px' }} />
                             </View>
                             <View >
-                                <Text style={styles.h3}>Riesgo Bajo </Text><Text style={styles.p}>de muerte neonatal pues tiene un puntaje ≥ 64 y &lt; 72 puntos.</Text>
+                                <Text style={styles.p}>
+                                    Categoría de riesgo C (bajo riesgo): tiene pocas probabilidades de complicaciones neonatales, pero ligeramente mayores a los niños de categoría D (muy bajo riesgo).
+                                </Text>
                             </View>
                         </View>
                         <View style={{ flex: '1' }}>
@@ -159,7 +161,7 @@ const RiesgoC = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                                 <Text style={styles.h3}>Sexo: </Text><Text style={styles.h4}>{formularioUno?.sexo}</Text>
                             </View>
                             <View style={styles.infoItem}>
-                                <Text style={styles.h3}>Edad Actual: </Text><Text style={styles.h4}>{ edadActual(fechaActual,fechaNacimiento)}</Text>
+                                <Text style={styles.h3}>Edad Actual: </Text><Text style={styles.h4}>{edadActual(fechaActual, fechaNacimiento)}</Text>
                             </View>
                             <View style={styles.infoItem}>
                                 <Text style={styles.h3}>Clasificación clínica de la edad gestacional: </Text>
@@ -169,7 +171,7 @@ const RiesgoC = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             </View>
                             <View style={styles.infoItem}>
                                 <Text style={styles.h3}>Peso al nacer: </Text>
-                                <PesoPdf peso={ formularioUno?.peso } />
+                                <PesoPdf peso={formularioUno?.peso} />
                             </View>
                             <View style={styles.infoItem}>
                                 <Text style={styles.h3}>Centil de peso al nacer para edad gestacional: </Text>
@@ -177,17 +179,17 @@ const RiesgoC = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             </View>
                             <View style={styles.infoItem}>
                                 <Text style={styles.h3}>Apgar a los 5': </Text>
-                                <ApgarPdf apgar={formularioUno?.apgar}/>
+                                <ApgarPdf apgar={formularioUno?.apgar} />
                             </View>
                             <View style={styles.infoItem}>
                                 <Text style={styles.h3}>Tipo de parto: </Text>
-                                <PartoPdf parto={formularioUno?.tipoParto}/>
+                                <PartoPdf parto={formularioUno?.tipoParto} />
                             </View>
                         </View>
                     </View>
                     <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px', marginTop: '60px' }}>
-                        <FormularioCinco formularioCinco={ formularioCinco } />
-                        <FormularioSeis formularioSeis={ formularioSeis } />
+                        <FormularioCinco formularioCinco={formularioCinco} />
+                        <FormularioSeis formularioSeis={formularioSeis} />
                     </View>
                     <View style={{ marginTop: '20px' }}>
                         {
@@ -323,6 +325,12 @@ const RiesgoC = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             </Text>
                         }
                         {
+                            formularioTres.reanimacion &&
+                            <Text style={styles.h4} >
+                                Reanimación neonatal sin presión positiva ni masaje cardiaco
+                            </Text>
+                        }
+                        {
                             formularioTres.embarazoMultiple &&
                             <Text style={styles.h4} >
                                 Embarazo múltiple
@@ -348,16 +356,16 @@ const RiesgoC = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                                 Es prematuro y recibió tratamiento de uteroinhibición hasta alcanzar maduración pulmonar
                             </Text>
                         }
+                        {
+                            formularioCuatro.madreHipertensa &&
+                            <Text style={styles.h4} >
+                                Madre con trastorno hipertensivo del embarazo sí recibió antihipertensivo y sulfato de magnesio
+                            </Text>
+                        }
                     </View>
                     <View style={{ marginTop: '20px' }}>
                         <Text style={styles.h3} >
-                            Descripción del caso:
-                        </Text>
-                        <Text style={styles.p} >
-                            Neonato de apellido materno <Text style={{ fontWeight: 'bold', fontSize: '15px' }}>{formularioUno.apellidoMaterno}</Text>, es un neonato de Categoría de riesgo C (bajo riesgo): tiene más probabilidades de eventos adversos neonatales antes de los 15 días de vida, en comparación a los niños de categoría D (muy bajo riesgo).
-                        </Text>
-                        <Text style={styles.p} >
-                            Como se encuentra en el primer nivel:
+                            Sugerencias de manejo en el establecimiento (seguir la norma vigente):
                         </Text>
                         <Text style={styles.p} >
                             1. Tome los signos vitales conforme la norma,.
@@ -366,16 +374,28 @@ const RiesgoC = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             2. Mantenga al bebé junto a su madre,
                         </Text>
                         <Text style={styles.p} >
-                            3. Aplique los cuidados rutinarios del recién nacido.
+                            3. Fomente la lactancia materna
+                        </Text>
+                        <Text style={styles.p} >
+                            4. Aplique los cuidados rutinarios del recién nacido.
                         </Text>
                         <Text style={styles.p} >
                             Si el neonato está estable y ha cumplido, al menos, 48 horas de vida cuando el nacimiento fue por parto normal; o, 72 horas de vida cuando ha sido por cesárea, proceda a dar el alta de calidad conforme la normativa vigente, y previa evaluación de un médico familiar.
                         </Text>
-                        <Text style={styles.p} >
-                            Oriente a la madre en lactancia materna exclusiva, cuidados del recién nacido en el hogar; en caso de prematurez o peso bajo, orientar de los cuidados extra (ver las páginas 53, 54 y 55 del AIEPI Clínico <Link src="http://186.42.188.158:8090/guias/AIEPI%20CLINICO.%20CUADROS%20DE%20PROCEDIMIENTOS.pdf" style={{color:'#60a5fa'}}> Link </Link>); y control en no más de 3 días en consulta de Pediatría o Medicina Familiar, previa notificación al establecimiento de salud para atención preferencial.
+                        <Text style={styles.h3} >
+                            Sugerencias al alta:
                         </Text>
                         <Text style={styles.p} >
-                            Si el neonato cumple con alguno de los “Factores que podrían incrementar el riesgo neonatal”, requiere una visita domiciliaria por parte de un médico, dentro de los 2 a 3 días de vida, o 24 a 48 horas del alta.
+                            I. Oriente a la madre en lactancia materna exclusiva, cuidados del recién nacido en el hogar; en caso de prematurez o peso bajo, orientar de los cuidados extra (ver las páginas 53, 54 y 55 del AIEPI Clínico <Link src="http://186.42.188.158:8090/guias/AIEPI%20CLINICO.%20CUADROS%20DE%20PROCEDIMIENTOS.pdf" style={{ color: '#60a5fa' }}> Link </Link>).
+                        </Text>
+                        <Text style={styles.p} >
+                            II. Control en no más de 3 días en consulta de Pediatría o Medicina Familiar, previa notificación al establecimiento de salud para atención preferencial.
+                        </Text>
+                        <Text style={styles.p} >
+                            III. Es importante tomar en cuenta que la muestra para tamizaje metabólico neonatal se debe tomar a partir del cuarto hasta los 28 días de vida del recién nacido.
+                        </Text>
+                        <Text style={styles.p} >
+                            IV. Si el neonato cumple con alguno de los “Factores que podrían incrementar el riesgo neonatal”, requiere una visita domiciliaria por parte de un médico, dentro de los 2 a 3 días de vida, o 24 a 48 horas del alta.
                         </Text>
                     </View>
                 </View>
