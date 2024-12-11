@@ -15,7 +15,7 @@ export const FormConOpciones = ({handleSubmit, handleListaComorbilidades, handle
                         />
                     </div>
                     <label htmlFor="listaComorbilidades" className="ms-2 text-sm text-gray-900 ">
-                        Busqueda por comorbilidades de acruerdo al CIE10.
+                        Busqueda por comorbilidades de acuerdo al CIE10.
                     </label>
                 </div>
                 <div className="flex items-center mb-4">

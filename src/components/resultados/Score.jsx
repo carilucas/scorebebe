@@ -13,7 +13,7 @@ const Score = ( {resultado, formularioCinco, formularioSeis} ) => {
                         :(resultado >= 71 && resultado < 77) ?
                         'border-yellow-600' 
                         :(resultado >= 67 && resultado < 72) ?
-                        'border-yellow-600'
+                        'border-green-600'
                         :'border-blue-400'
                     }`
                     }
@@ -26,7 +26,7 @@ const Score = ( {resultado, formularioCinco, formularioSeis} ) => {
                                 :(resultado >= 71 && resultado < 77) ?
                                 'text-yellow-600' 
                                 :(resultado >= 67 && resultado < 72) ?
-                                'text-yellow-600'
+                                'text-green-600'
                                 :'text-blue-400'
                             }
                         `}

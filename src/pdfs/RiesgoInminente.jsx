@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
-        marginTop: '-20px'
+        marginTop: '-20px',
+        marginBottom:'10px'
     },
     h1: {
         fontSize: '19px',
@@ -80,6 +81,13 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto',
         marginVertical: '5px'
     },
+    pSmall: {
+        fontSize: '10px',
+        fontWeight: '400',
+        color: '#000000',
+        fontFamily: 'Roboto',
+        marginVertical: '5px'
+    },
     pBold: {
         fontSize: '13px',
         fontWeight: 'bold',
@@ -109,6 +117,15 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    factoresRiesgoInminente: {
+        borderBottom: '0.5px solid #000000',
+        marginBottom: '15px',
+        paddingBottom: '5px',
+        fontSize: '14px',
+        fontWeight: '400',
+        color: '#374151',
+        fontFamily: 'Roboto'
     }
 })
 
@@ -133,20 +150,17 @@ const RiesgoInminente = ({ formularioUno = {}, score = 0, formularioDos = {} }) 
                         <Image src={logoIspBlanco} style={{ width: '129px', height: '35px' }} />
                     </View>
                 </View>
-                <View style={{ marginTop: '10px', padding: '20px' }}>
+                <View style={{ padding: '20px' }}>
                     <Text style={styles.h1}>Score Bebé y Reporte del Neonato</Text>
-                    <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px', marginBottom: '10px' }}>
-                        <View style={{ flex: '1' }}>
-                            <Text style={styles.h2}>Riesgo inminente para el neonato</Text>
+                    <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'center', flexDirection: 'row', gap: '30px', padding: '20px', marginBottom: '10px' }}>
+                        <View style={{  display:'flex', justifyContent:'center' }}>
+                            <Text style={[styles.h2, {textAlign:'center'}]}>Riesgo inminente para el neonato</Text>
                             <View>
-                                <Image src={warning} style={{ width: '85px', height: '70px' }} />
+                                <Image src={warning} style={{ width: '85px', height: '70px', display:'block', margin:'auto' }} />
                             </View>
                             <View >
                                 <Text style={styles.h3}>Alto riesgo </Text><Text style={styles.p}>requiere estabilización inmediata y/o transferencia urgente</Text>
                             </View>
-                        </View>
-                        <View style={{ flex: '1' }}>
-
                         </View>
                     </View>
                     <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px' }}>
@@ -196,85 +210,85 @@ const RiesgoInminente = ({ formularioUno = {}, score = 0, formularioDos = {} }) 
                         }
                         {
                             formularioDos.respiracion &&
-                            <Text style={styles.h4} >
-                                El niño respira débilmente o tiene dificultad respiratoria severa.
-                            </Text>
-                        }
-                        {
-                            (formularioDos.saturacion || formularioDos.alteracionRespiratoria || formularioDos.alteracionRectal) &&
-                            <Text style={styles.h3} >
-                                Porcentaje de saturación
+                            <Text style={styles.factoresRiesgoInminente} >
+                                El niño respira débilmente o tiene dificultad respiratoria severa (utilizar la escala de Silverman en la página 48 del AIEPI Clínico <Link src="https://www.dropbox.com/scl/fi/182w0atejwe0ddlyrzhy4/SILVERMAN.pdf?rlkey=exesvyvoom6ejqob91hjez7cs&st=5axrmwb7&dl=0" >(link) </Link>
                             </Text>
                         }
                         {
                             formularioDos.saturacion &&
-                            <Text style={styles.h4} >
-                                Menor a 92%
+                            <Text style={styles.factoresRiesgoInminente} >
+                                Porcentaje de saturación Menor a 92%
+                            </Text>
+                        }
+                        {
+                            formularioDos.alteracionCardiaca &&
+                            <Text style={styles.factoresRiesgoInminente} >
+                                Tiene una frecuencia cardíaca alterada (&lt;100 o &gt;160 lpm)
                             </Text>
                         }
                         {
                             formularioDos.alteracionRespiratoria &&
-                            <Text style={styles.h4} >
+                            <Text style={styles.factoresRiesgoInminente} >
                                 Tiene alguna alteración de su frecuencia respiratoria (&lt; 40 o &gt; 60 rpm)
                             </Text>
                         }
                         {
                             formularioDos.alteracionRectal &&
-                            <Text style={styles.h4} >
+                            <Text style={styles.factoresRiesgoInminente} >
                                 Tiene alguna alteración de su temperatura rectal (&lt; 36.6 o &gt; 38 oC) o temperatura axilar (&lt; 36.6 o &gt; 37.5 oC)
                             </Text>
                         }
                         {
-                            (formularioDos.convulsiones || formularioDos.icterico || formularioDos.hipoglucemia || formularioDos.succionDebil || formularioDos.hidrorrea || formularioDos.reanimacion || formularioDos.malformaciones || formularioDos.lesionesSeveras) &&
-                            <Text style={styles.h3} >
-                                Se encuentra hipotónico
+                            formularioDos.hipotonico &&
+                            <Text style={styles.factoresRiesgoInminente} >
+                                Se encuentra hipotónico: tiene un pobre tono muscular o sus reflejos son débiles
                             </Text>
                         }
                         {
                             formularioDos.convulsiones &&
-                            <Text style={styles.h4} >
+                            <Text style={styles.factoresRiesgoInminente} >
                                 Presencia de convulsiones
                             </Text>
                         }
                         {
                             formularioDos.icterico &&
-                            <Text style={styles.h4} >
+                            <Text style={styles.factoresRiesgoInminente} >
                                 Se encuentra ictérico antes de las 24 horas o después del cuarto día de vida
                             </Text>
                         }
                         {
                             formularioDos.hipoglucemia &&
-                            <Text style={styles.h4} >
-                                Hipoglucemia (&lt; 50 mg/dL)
+                            <Text style={styles.factoresRiesgoInminente} >
+                                Hipoglucemia (&lt; 40 mg/dL)
                             </Text>
                         }
                         {
                             formularioDos.succionDebil &&
-                            <Text style={styles.h4} >
+                            <Text style={styles.factoresRiesgoInminente} >
                                 Tiene succión débil
                             </Text>
                         }
                         {
                             formularioDos.hidrorrea &&
-                            <Text style={styles.h4} >
-                                Madre tuvo hidrorrea mayor a 18 horas
+                            <Text style={styles.factoresRiesgoInminente} >
+                                Madre tuvo oligohidramnios, hidrorrea mayor o igual a 18 horas, fiebre o corioamnionitis o flujo genital fétido
                             </Text>
                         }
                         {
                             formularioDos.reanimacion &&
-                            <Text style={styles.h4} >
-                                Fue necesario reanimación básica o avanzada
+                            <Text style={styles.factoresRiesgoInminente} >
+                                Reanimación neonatal con presión positiva o masaje cardiaco
                             </Text>
                         }
                         {
                             formularioDos.malformaciones &&
-                            <Text style={styles.h4} >
+                            <Text style={styles.factoresRiesgoInminente} >
                                 Malformaciones severas
                             </Text>
                         }
                         {
                             formularioDos.lesionesSeveras &&
-                            <Text style={styles.h4} >
+                            <Text style={styles.factoresRiesgoInminente} >
                                 Lesiones severas debido al parto
                             </Text>
                         }
@@ -296,7 +310,7 @@ const RiesgoInminente = ({ formularioUno = {}, score = 0, formularioDos = {} }) 
                             3. Dar antibiótico apropiado en caso de: a) rotura de membranas de &gt; 18 horas, b) flujo genital de mal olor o c) prematurez
                         </Text>
                         <Text style={styles.p} >
-                            4. De no disponer de tratamiento específico, se deberá activar la gestión de la transferencia, considerando el acróstico “R.E.F.I.E.R.A.” (ver las páginas 60 y 61 del AIEPI clínico <Link src="http://186.42.188.158:8090/guias/AIEPI%20CLINICO.%20CUADROS%20DE%20PROCEDIMIENTOS.pdf" style={{ color: '#60a5fa' }}> Link </Link>) aplicar las normas de cuidado neonatal vigentes
+                            4. De no disponer de tratamiento específico, se deberá activar la gestión de la transferencia, considerando el acróstico “R.E.F.I.E.R.A.” (ver las páginas 60 y 61 del AIEPI clínico <Link src="https://www.dropbox.com/scl/fi/jsr59kqtpqr37vdkd9dcv/AIEPI-FINAL_18102019.pdf?rlkey=dm8ns6izu1rp2ggvnuxyt2evh&st=9bagbzsh&dl=0" style={{ color: '#60a5fa' }}> Link </Link>) aplicar las normas de cuidado neonatal vigentes
                         </Text>
                         <Text style={styles.h3} >
                             Normas de estabilización y transporte para la referencia (AIEPI) (1)
@@ -305,19 +319,34 @@ const RiesgoInminente = ({ formularioUno = {}, score = 0, formularioDos = {} }) 
                             R: RESPIRACIÓN = OXÍGENO
                         </Text>
                         <Text style={styles.p} >
-                            a) Recién nacido/a: Aspiración de secreciones (primero boca y luego nariz) y posición adecuada. b) Si la clasificación lo recomienda, dar oxígeno a flujo libre por catéter nasal (en el recién nacido no más de 0,5 L/min).
+                            a) Recién nacido/a: Aspiración de secreciones (primero boca y luego nariz) y posición adecuada.
+                        </Text>
+                        <Text style={styles.p} >
+                            b) Si la clasificación lo recomienda, dar oxígeno a flujo libre por catéter nasal (en el recién nacido no más de 0,5 L/min).
                         </Text>
                         <Text style={styles.pBold} >
                             E: ESTABILIDAD HEMODINÁMICA
                         </Text>
                         <Text style={styles.p} >
-                            a) Toda niña o niño con signos de hipovolemia y baja perfusión (Llenado capilar &gt; 2 segundos, palidez o moteado de piel y taquicardia &gt; 180), debe estabilizarse antes de referir con cargas rápidas de Lactato Ringer o Solución Salina al 0,9%, 10-20 ml/kg. b) Realizar maniobras de reanimación neonatal en caso de paro respiratorio o cardíaco.
+                            a) Toda niña o niño con signos de hipovolemia y baja perfusión (Llenado capilar &gt; 2 segundos, palidez o moteado de piel y taquicardia &gt; 180), debe estabilizarse antes de referir con cargas rápidas de Lactato Ringer o Solución Salina al 0,9%, 10-20 ml/kg.
+                        </Text>
+                        <Text style={styles.p} >
+                            b) Realizar maniobras de reanimación neonatal en caso de paro respiratorio o cardíaco.
                         </Text>
                         <Text style={styles.pBold} >
                             F: FRÍO = EVITAR HIPOTERMIA
                         </Text>
                         <Text style={styles.p} >
-                            (Evitar el contacto directo con bolda de agua caliente o fuentes de calor) a) Envolver a la recién nacida o recién nacido con paños limpios, tibios y secos, incluyendo la cabeza (colocar gorrito). b) Ponerle en contacto directo, piel a piel (Técnica canguro). c) Según disponibilidad, utilizar cualquier fuente de calor: cuna radiante, caja de transporte, incubadora, u otros (según disponibilidad). Recuerde que la hipotermia es mortal para los neonatos.
+                            (Evitar el contacto directo con bolsa de agua caliente o fuentes de calor)
+                        </Text>
+                        <Text style={styles.p} >
+                            a) Envolver a la recién nacida o recién nacido con paños limpios, tibios y secos, incluyendo la cabeza (colocar gorrito).
+                        </Text>
+                        <Text style={styles.p} >
+                            b) Ponerle en contacto directo, piel a piel (Técnica canguro).
+                        </Text>
+                        <Text style={styles.p} >
+                            c) Según disponibilidad, utilizar cualquier fuente de calor: cuna radiante, caja de transporte, incubadora, u otros (según disponibilidad). Recuerde que la hipotermia es mortal para los neonatos.
                         </Text>
                         <Text style={styles.pBold} >
                             I: INFORMACIÓN A PADRES Y CUIDADORES
@@ -329,7 +358,16 @@ const RiesgoInminente = ({ formularioUno = {}, score = 0, formularioDos = {} }) 
                             E: ENERGÍA = GLUCOSA
                         </Text>
                         <Text style={styles.p} >
-                            En la niña desnutrida o niño desnutrido grave, lactante menor y especialmente en la recién nacida o el recién nacido es vital prevenir la hipoglucemia. Administrar: a) Leche materna, Dextrosa al 5% en agua azucarada por vía oral o sonda orogástrica, 20-50 mL (10 mL/kg), administrados lentamente. b) Como emergencia, se puede colocar media cucharadita (2,5 g) de azúcar corriente, humedecida, debajo de la lengua del recién nacido, para absorción sublingual. b) Si existe personal capacitado para canalizar vía periférica: Solución intravenosa con dextrosa al 10%; 100 mL (según disponibilidad), a 12 microgutas/minuto.
+                            En la niña desnutrida o niño desnutrido grave, lactante menor y especialmente en la recién nacida o el recién nacido es vital prevenir la hipoglucemia. Administrar:
+                        </Text>
+                        <Text style={styles.p} >
+                            a) Leche materna, Dextrosa al 5% en agua azucarada por vía oral o sonda orogástrica, 20-50 mL (10 mL/kg), administrados lentamente.
+                        </Text>
+                        <Text style={styles.p} >
+                            b) Como emergencia, se puede colocar media cucharadita (2,5 g) de azúcar corriente, humedecida, debajo de la lengua del recién nacido, para absorción sublingual.
+                        </Text>
+                        <Text style={styles.p} >
+                            c) Si existe personal capacitado para canalizar vía periférica: Solución intravenosa con dextrosa al 10%; 100 mL (según disponibilidad), a 12 microgotas/minuto.
                         </Text>
                         <Text style={styles.pBold} >
                             NOTA:
@@ -347,13 +385,36 @@ const RiesgoInminente = ({ formularioUno = {}, score = 0, formularioDos = {} }) 
                             A: ADMINISTRACIÓN DE LÍQUIDOS Y MEDICAMENTOS
                         </Text>
                         <Text style={styles.p} >
-                            Administrar antibiótico, broncodilatadores, quinina, paracetamol y todo tratamiento necesario antes y durante la referencia. Líquidos de base así: &lt; 10 kg = 100 mL/kg/día, de 10 a 20 kg = 1000 mL + (50 mL/kg por cada kilo mayor de 10 kg), &gt; 20 kg = 1500 mL + (20 mL/kg por cada Kg &gt; 20 kg).
-                            Otros cuidados importantes: a) Distensión abdominal: Colocar sonda nasogástrica abierta para descomprimir el estómago, evitar aspiración. b) Dificultad respiratoria: transportar al RN con oxígeno por catéter nasal si es posible en ambulancia equipada. c) Trauma con hemorragia externa: cubrir la herida con compresas con solución salina tibia o plástico. d) Fractura o trauma: inmovilizar el área afectada.
+                            Administrar antibiótico, broncodilatadores, quinina, paracetamol y todo tratamiento necesario antes y durante la referencia. Líquidos de base así:
+                        </Text>
+                        <Text style={styles.p} >
+                            &lt; 10 kg = 100 mL/kg/día,
+                        </Text>
+                        <Text style={styles.p} >
+                            De 10 a 20 kg = 1000 mL + (50 mL/kg por cada kilo mayor de 10 kg),
+                        </Text>
+                        <Text style={styles.p} >
+                            &gt; 20 kg = 1500 mL + (20 mL/kg por cada Kg &gt; 20 kg).
+                        </Text>
+                        <Text style={styles.p} >
+                            Otros cuidados importantes:
+                        </Text>
+                        <Text style={styles.p} >
+                            a) Distensión abdominal: Colocar sonda nasogástrica abierta para descomprimir el estómago, evitar aspiración.
+                        </Text>
+                        <Text style={styles.p} >
+                            b) Dificultad respiratoria: transportar al RN con oxígeno por catéter nasal si es posible en ambulancia equipada.
+                        </Text>
+                        <Text style={styles.p} >
+                            c) Trauma con hemorragia externa: cubrir la herida con compresas con solución salina tibia o plástico.
+                        </Text>
+                        <Text style={styles.p} >
+                            d) Fractura o trauma: inmovilizar el área afectada.
                         </Text>
                         <Text style={styles.pBold} >
                             Durante el transporte, la niña o niño debe estar acompañado por personal de salud capacitado en reanimación y si es posible en ambulancia equipada.
                         </Text>
-                        <Text style={styles.p} >
+                        <Text style={styles.pSmall} >
                             Referencia: [1] B. Marchand, B. Tello, I. Dueñas-Espín, B. Bonifaz, Atención integral a las enfermedades prevalentes de la infancia (AIEPI) clínico. Cuadros de procedimientos, Second Edition, Ministerio de Salud Pública del Ecuador, Quito-Ecuador, 2018.∫
                         </Text>
                     </View>

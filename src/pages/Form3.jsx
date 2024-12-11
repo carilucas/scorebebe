@@ -82,7 +82,7 @@ const Form3 = () => {
                                     />
                                 </div>
                                 <label htmlFor="polihidramnios" className="ms-2 text-sm text-gray-900 ">
-                                    Madre tuvo polihidramnios
+                                    Madre tuvo polihidramnios u oligohidramnios
                                 </label>
                             </div>
                             <div className="flex items-center mb-4">

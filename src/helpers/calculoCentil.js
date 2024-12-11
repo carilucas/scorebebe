@@ -9,6 +9,6 @@ export const calculoCentil = (parametrosCentil, edad, peso, sexo )=>{
 
     const pesoGramos = peso / 1000;
 
-    pesoGramos < Number(cincoKg) ? percentil = 17 : pesoGramos > Number(noventaYCincoKg) ? percentil = 14 : percentil = 15;
+    pesoGramos < Number(cincoKg) ? percentil = 18 : pesoGramos > Number(noventaYCincoKg) ? percentil = 18 : percentil = 15;
     return percentil;
 }

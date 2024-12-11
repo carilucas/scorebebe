@@ -34,6 +34,7 @@ const Form2 = () => {
                 alteracionRespiratoria: false,
                 alteracionCardiaca: false,
                 alteracionRectal: false,
+                hipotonico: false,
                 convulsiones: false,
                 icterico: false,
                 hipoglucemia: false,
@@ -101,11 +102,11 @@ const Form2 = () => {
             <Container>
                 <div className="w-full max-w-xl">
                     <h1 className='text-gray-900 mb-4 font-bold text-lg max-w-lg'>
-                        Antesde empezar, haga click, seleccione cadacaracterística o antecedente que el neonato presente.
+                        Antes de empezar, haga click, seleccione cada característica o antecedente que el neonato presente.
                     </h1>
                     <form className="w-full max-w-lg" onSubmit={handleSubmit(onSubmit)}>
                         <h3 className='text-gray-900 mb-4  text-md max-w-lg font-medium'>
-                            Factores de riesgo inminente para el neonato que requieren estabilización inmdiata y/o transferencia urgente
+                            Factores de riesgo inminente para el neonato que requieren estabilización inmediata y/o transferencia urgente
                         </h3>
                         <div className="mb-6">
                             <div className="flex items-center mb-4">
@@ -115,7 +116,7 @@ const Form2 = () => {
                                     />
                                 </div>
                                 <label htmlFor="respiracion" className=" ms-2 text-sm text-gray-900">
-                                    El niño respira débilmente o tiene dificultad respiratoria severa (utilizar la escala de Silverman o Downes según la referencia (pp. 48 y 49)) <a className="font-bold text-blue-500" href="http://186.42.188.158:8090/guias/AIEPI%20CLINICO.%20CUADROS%20DE%20PROCEDIMIENTOS.pdf" target="_blank" rel="noopener noreferrer">Ver referencia</a>
+                                    El niño respira débilmente o tiene dificultad respiratoria severa (utilizar la escala de Silverman o Downes según la referencia (pp. 48 y 49)) <a className="font-bold text-blue-500" href="https://www.dropbox.com/scl/fi/182w0atejwe0ddlyrzhy4/SILVERMAN.pdf?rlkey=exesvyvoom6ejqob91hjez7cs&st=5axrmwb7&dl=0" target="_blank" rel="noopener noreferrer">Ver referencia</a>
                                 </label>
                             </div>
                         </div>
@@ -168,9 +169,16 @@ const Form2 = () => {
                             </div>
                         </div>
                         <div className="mb-6">
-                            <h3 className='text-gray-900 mb-4  text-md max-w-lg font-medium'>
-                                Se encuentra hipotónico: tiene un pobre tono muscular o sus reflejos son débiles 
-                            </h3>
+                            <div className="flex items-center mb-8">
+                                <div className="min-w-6 flex items-center">
+                                    <input id="hipotonico" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                        {...register("formularioDos.hipotonico")}
+                                    />
+                                </div>
+                                <label htmlFor="hipotonico" className="ms-2 text-sm text-gray-900 ">
+                                    Se encuentra hipotónico: tiene un pobre tono muscular o sus reflejos son débiles 
+                                </label>
+                            </div>
                             <div className="flex items-center mb-8">
                                 <div className="min-w-6 flex items-center">
                                     <input id="convulsiones" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"

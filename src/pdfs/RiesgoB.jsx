@@ -80,6 +80,13 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto',
         marginVertical: '5px'
     },
+    pSmall: {
+        fontSize: '10px',
+        fontWeight: '400',
+        color: '#374151',
+        fontFamily: 'Roboto',
+        marginVertical: '5px'
+    },
     pBold: {
         fontSize: '13px',
         fontWeight: 'bold',
@@ -139,14 +146,14 @@ const RiesgoB = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                     <Text style={styles.h1}>Score Bebé y Reporte del Neonato</Text>
                     <View style={{ border: '1px solid #e7e5e4', padding: '20px' }}>
                         <View style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', }}>
-                            <View style={{ flex: '1' }}>
-                                <Text style={styles.h2}>Categoría de riesgo B:  Moderado riesgo de muerte neonatal y atiende en primer o segundo nivel de atención:</Text>
+                            <View style={{ flex: '1', display:'flex',justifyContent:'center' }}>
+                                <Text style={[styles.h2, { textAlign:'center'}]}>Score Bebé categoría B</Text>
                                 <View>
-                                    <Image src={caution} style={{ width: '85px', height: '70px' }} />
+                                    <Image src={caution} style={{ display:'block', margin:'auto', width: '105px', height: '100px' }} />
                                 </View>
                             </View>
-                            <View style={{ flex: '1' }}>
-                                <Text style={styles.h2} >Score del Neonato</Text>
+                            <View style={{ flex: '1', display:'flex',justifyContent:'center' }}>
+                                <Text style={[styles.h2, { textAlign:'center'}]} >Score del Neonato</Text>
                                 <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <View style={styles.circle} >
                                         <Text style={{ color: '#ca8a04', fontSize: '40px', fontWeight: 'bold' }}>{score}</Text>
@@ -155,7 +162,9 @@ const RiesgoB = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             </View>
                         </View>
                         <View >
-                            <Text style={styles.p}>Categoría de riesgo B (moderado riesgo); tiene más de un 77% más probabilidades de muerte neonatal que los niños de la categoría C (bajo riesgo). Requiere estabilización inmediata:</Text>
+                            <Text style={styles.p}>
+                                Neonato/a con moderado riesgo de resultados graves en salud neonatal. Tiene &gt; 77% posibilidades de resultados graves en salud neonatal que los niños de bajo riesgo. Requiere estabilización inmediata. Como usted lo/a atiende en primer o segundo nivel de atención:
+                            </Text>
                         </View>
                     </View>
                     <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px' }}>
@@ -211,7 +220,7 @@ const RiesgoB = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                         {
                             formularioTres.polihidramnios &&
                             <Text style={styles.h4} >
-                                Madre tuvo polihidramnios
+                                Madre tuvo polihidramnios u oligohidramnios
                             </Text>
                         }
                         {
@@ -387,7 +396,16 @@ const RiesgoB = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             2. Si no existe contraindicación, iniciar lactancia en la primera media hora postparto.
                         </Text>
                         <Text style={styles.p} >
-                            3. Dar antibiótico apropiado en caso de: a) rotura de membranas de &gt; 18 horas, b) flujo genital de mal olor o c) prematurez (ver las páginas 60 y 61 del AIEPI clínico (link)).
+                            3. Dar antibiótico apropiado en caso de:
+                        </Text>
+                        <Text style={styles.p} >
+                            a) rotura de membranas de &gt; 18 horas,
+                        </Text>
+                        <Text style={styles.p} >
+                            b) flujo genital de mal olor o
+                        </Text>
+                        <Text style={styles.p} >
+                            c) prematurez (ver las páginas 60 y 61 del AIEPI clínico <Link src="https://www.dropbox.com/scl/fi/jsr59kqtpqr37vdkd9dcv/AIEPI-FINAL_18102019.pdf?rlkey=dm8ns6izu1rp2ggvnuxyt2evh&st=9bagbzsh&dl=0">(link)</Link> ).
                         </Text>
                         <Text style={styles.p} >
                             4. Activar la gestión de la transferencia, considerando el acróstico “R.E.F.I.E.R.A.”
@@ -399,19 +417,34 @@ const RiesgoB = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             R: RESPIRACIÓN = OXÍGENO
                         </Text>
                         <Text style={styles.p} >
-                            a) Recién nacido/a: Aspiración de secreciones (primero boca y luego nariz) y posición adecuada. b) Si la clasificación lo recomienda, dar oxígeno a flujo libre por catéter nasal (en el recién nacido no más de 0,5 L/min).
+                            a) Recién nacido/a: Aspiración de secreciones (primero boca y luego nariz) y posición adecuada.
+                        </Text>
+                        <Text style={styles.p} >
+                            b) Si la clasificación lo recomienda, dar oxígeno a flujo libre por catéter nasal (en el recién nacido no más de 0,5 L/min).
                         </Text>
                         <Text style={styles.pBold} >
                             E: ESTABILIDAD HEMODINÁMICA
                         </Text>
                         <Text style={styles.p} >
-                            a) Toda niña o niño con signos de hipovolemia y baja perfusión (Llenado capilar &gt; 2 segundos, palidez o moteado de piel y taquicardia &gt; 180), debe estabilizarse antes de referir con cargas rápidas de Lactato Ringer o Solución Salina al 0,9%, 10-20 ml/kg. b) Realizar maniobras de reanimación neonatal en caso de paro respiratorio o cardíaco.
+                            a) Toda niña o niño con signos de hipovolemia y baja perfusión (Llenado capilar &gt; 2 segundos, palidez o moteado de piel y taquicardia &gt; 180), debe estabilizarse antes de referir con cargas rápidas de Lactato Ringer o Solución Salina al 0,9%, 10-20 ml/kg.
+                        </Text>
+                        <Text style={styles.p} >
+                            b) Realizar maniobras de reanimación neonatal en caso de paro respiratorio o cardíaco.
                         </Text>
                         <Text style={styles.pBold} >
                             F: FRÍO = EVITAR HIPOTERMIA
                         </Text>
                         <Text style={styles.p} >
-                            (Evitar el contacto directo con bolda de agua caliente o fuentes de calor) a) Envolver a la recién nacida o recién nacido con paños limpios, tibios y secos, incluyendo la cabeza (colocar gorrito). b) Ponerle en contacto directo, piel a piel (Técnica canguro). c) Según disponibilidad, utilizar cualquier fuente de calor: cuna radiante, caja de transporte, incubadora, u otros (según disponibilidad). Recuerde que la hipotermia es mortal para los neonatos.
+                            (Evitar el contacto directo con bolsa de agua caliente o fuentes de calor)
+                        </Text>
+                        <Text style={styles.p} >
+                            a) Envolver a la recién nacida o recién nacido con paños limpios, tibios y secos, incluyendo la cabeza (colocar gorrito).
+                        </Text>
+                        <Text style={styles.p} >
+                            b) Ponerle en contacto directo, piel a piel (Técnica canguro).
+                        </Text>
+                        <Text style={styles.p} >
+                            c) Según disponibilidad, utilizar cualquier fuente de calor: cuna radiante, caja de transporte, incubadora, u otros (según disponibilidad). Recuerde que la hipotermia es mortal para los neonatos.
                         </Text>
                         <Text style={styles.pBold} >
                             I: INFORMACIÓN A PADRES Y CUIDADORES
@@ -423,7 +456,16 @@ const RiesgoB = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             E: ENERGÍA = GLUCOSA
                         </Text>
                         <Text style={styles.p} >
-                            En la niña desnutrida o niño desnutrido grave, lactante menor y especialmente en la recién nacida o el recién nacido es vital prevenir la hipoglucemia. Administrar: a) Leche materna, Dextrosa al 5% en agua azucarada por vía oral o sonda orogástrica, 20-50 mL (10 mL/kg), administrados lentamente. b) Como emergencia, se puede colocar media cucharadita (2,5 g) de azúcar corriente, humedecida, debajo de la lengua del recién nacido, para absorción sublingual. b) Si existe personal capacitado para canalizar vía periférica: Solución intravenosa con dextrosa al 10%; 100 mL (según disponibilidad), a 12 microgutas/minuto.
+                            En la niña desnutrida o niño desnutrido grave, lactante menor y especialmente en la recién nacida o el recién nacido es vital prevenir la hipoglucemia. Administrar:
+                        </Text>
+                        <Text style={styles.p} >
+                            a) Leche materna, Dextrosa al 5% en agua azucarada por vía oral o sonda orogástrica, 20-50 mL (10 mL/kg), administrados lentamente.
+                        </Text>
+                        <Text style={styles.p} >
+                            b) Como emergencia, se puede colocar media cucharadita (2,5 g) de azúcar corriente, humedecida, debajo de la lengua del recién nacido, para absorción sublingual.
+                        </Text>
+                        <Text style={styles.p} >
+                            c) Si existe personal capacitado para canalizar vía periférica: Solución intravenosa con dextrosa al 10%; 100 mL (según disponibilidad), a 12 microgotas/minuto.
                         </Text>
                         <Text style={styles.pBold} >
                             NOTA:
@@ -441,13 +483,39 @@ const RiesgoB = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             A: ADMINISTRACIÓN DE LÍQUIDOS Y MEDICAMENTOS
                         </Text>
                         <Text style={styles.p} >
-                            Administrar antibiótico, broncodilatadores, quinina, paracetamol y todo tratamiento necesario antes y durante la referencia. Líquidos de base así: &lt; 10 kg = 100 mL/kg/día, de 10 a 20 kg = 1000 mL + (50 mL/kg por cada kilo mayor de 10 kg), &gt; 20 kg = 1500 mL + (20 mL/kg por cada Kg &gt; 20 kg).
+                            Administrar antibiótico, broncodilatadores, quinina, paracetamol y todo tratamiento necesario antes y durante la referencia. Líquidos de base así:
+                        </Text>
+                        <Text style={styles.p} >
+                            &lt; 10 kg = 100 mL/kg/día,
+                        </Text>
+                        <Text style={styles.p} >
+                            De 10 a 20 kg = 1000 mL + (50 mL/kg por cada kilo mayor de 10 kg),
+                        </Text>
+                        <Text style={styles.p} >
+                            &gt; 20 kg = 1500 mL + (20 mL/kg por cada Kg &gt; 20 kg).
+                        </Text>
+                        <Text style={styles.p} >
                             Otros cuidados importantes: a) Distensión abdominal: Colocar sonda nasogástrica abierta para descomprimir el estómago, evitar aspiración. b) Dificultad respiratoria: transportar al RN con oxígeno por catéter nasal si es posible en ambulancia equipada. c) Trauma con hemorragia externa: cubrir la herida con compresas con solución salina tibia o plástico. d) Fractura o trauma: inmovilizar el área afectada.
+                        </Text>
+                        <Text style={styles.p} >
+                            Otros cuidados importantes:
+                        </Text>
+                        <Text style={styles.p} >
+                            a) Distensión abdominal: Colocar sonda nasogástrica abierta para descomprimir el estómago, evitar aspiración.
+                        </Text>
+                        <Text style={styles.p} >
+                            b) Dificultad respiratoria: transportar al RN con oxígeno por catéter nasal si es posible en ambulancia equipada.
+                        </Text>
+                        <Text style={styles.p} >
+                            c) Trauma con hemorragia externa: cubrir la herida con compresas con solución salina tibia o plástico.
+                        </Text>
+                        <Text style={styles.p} >
+                            d) Fractura o trauma: inmovilizar el área afectada.
                         </Text>
                         <Text style={styles.pBold} >
                             Durante el transporte, la niña o niño debe estar acompañado por personal de salud capacitado en reanimación y si es posible en ambulancia equipada.
                         </Text>
-                        <Text style={styles.p} >
+                        <Text style={styles.pSmall} >
                             Referencia: [1] B. Marchand, B. Tello, I. Dueñas-Espín, B. Bonifaz, Atención integral a las enfermedades prevalentes de la infancia (AIEPI) clínico. Cuadros de procedimientos, Second Edition, Ministerio de Salud Pública del Ecuador, Quito-Ecuador, 2018.∫
                         </Text>
                         <Text style={styles.p} >

@@ -3,7 +3,7 @@ import { format } from "@formkit/tempo";
 import logoScoreBlanco from '../../public/03-scorebebe_logo.png';
 import logoPuceBlanco from '../../public/02-PUCE-Blanco-V.png';
 import logoIspBlanco from '../../public/04-isp-horizontal_blanco.png';
-import caution from '../../public/02-caution.png';
+import safety from '../../public/03-safety.png';
 import RobotoLight from '../fonts/Roboto/Roboto-Light.ttf';
 import RobotoRegular from '../fonts/Roboto/Roboto-Regular.ttf';
 import RobotoBold from '../fonts/Roboto/Roboto-Bold.ttf';
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         marginTop: '-20px',
-        marginBottom: '20px',
+        marginBottom: '10px',
     },
     h1: {
         fontSize: '19px',
@@ -79,6 +79,13 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto',
         marginVertical: '5px'
     },
+    pSmall: {
+        fontSize: '10px',
+        fontWeight: '400',
+        color: '#374151',
+        fontFamily: 'Roboto',
+        marginVertical: '5px'
+    },
     pBold: {
         fontSize: '13px',
         fontWeight: 'bold',
@@ -101,7 +108,7 @@ const styles = StyleSheet.create({
         marginBottom: '10px'
     },
     circle: {
-        border: '4px solid #ca8a04',
+        border: '4px solid #4b9407',
         borderRadius: '50%',
         width: '100px',
         height: '100px',
@@ -137,24 +144,24 @@ const RiesgoC = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                     <Text style={styles.h1}>Score Bebé y Reporte del Neonato</Text>
                     <View style={{ border: '1px solid #e7e5e4', padding: '20px' }}>
                         <View style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', }}>
-                            <View style={{ flex: '1' }}>
-                                <Text style={styles.h2}>Categoría de riesgo C: Bajo riesgo de muerte neonatal y atiende en primer o segundo nivel de atención:</Text>
+                            <View style={{ flex: '1', display:'flex',justifyContent:'center' }}>
+                                <Text style={[styles.h2, { textAlign:'center'}]}>Score Bebé categoría C</Text>
                                 <View>
-                                    <Image src={caution} style={{ width: '85px', height: '70px' }} />
+                                    <Image src={safety} style={{ display:'block', margin:'auto', width: '105px', height: '100px' }} />
                                 </View>
                             </View>
-                            <View style={{ flex: '1' }}>
-                                <Text style={styles.h2} >Score del Neonato</Text>
+                            <View style={{ flex: '1', display:'flex',justifyContent:'center' }}>
+                                <Text style={[styles.h2, { textAlign:'center'}]} >Score del Neonato</Text>
                                 <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <View style={styles.circle} >
-                                        <Text style={{ color: '#ca8a04', fontSize: '40px', fontWeight: 'bold' }}>{score}</Text>
+                                        <Text style={{ color: '#4b9407', fontSize: '40px', fontWeight: 'bold' }}>{score}</Text>
                                     </View>
                                 </View>
                             </View>
                         </View>
                         <View >
                             <Text style={styles.p}>
-                                Categoría de riesgo C (bajo riesgo): tiene pocas probabilidades de complicaciones neonatales, pero ligeramente mayores a los niños de categoría D (muy bajo riesgo).
+                                Neonato/a con bajo riesgo de resultados graves en salud neonatal. Como usted lo/a atiende en primer o segundo nivel de atención:
                             </Text>
                         </View>
                     </View>
@@ -197,7 +204,7 @@ const RiesgoC = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             </View>
                         </View>
                     </View>
-                    <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px', marginTop: '60px' }}>
+                    <View style={{ border: '1px solid #e7e5e4', display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', padding: '20px', marginTop: '20px' }}>
                         <FormularioCinco formularioCinco={formularioCinco} />
                         <FormularioSeis formularioSeis={formularioSeis} />
                     </View>
@@ -211,7 +218,7 @@ const RiesgoC = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                         {
                             formularioTres.polihidramnios &&
                             <Text style={styles.h4} >
-                                Madre tuvo polihidramnios
+                                Madre tuvo polihidramnios u oligohidramnios
                             </Text>
                         }
                         {
@@ -390,16 +397,19 @@ const RiesgoC = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             4. Aplique los cuidados rutinarios del recién nacido.
                         </Text>
                         <Text style={styles.p} >
+                            5. Si existe empeoramiento del estado neonatal; y, de acuerdo con la capacidad resolutiva de su establecimiento de salud, considerar la gestión de la transferencia, considerando el acróstico “R.E.F.I.E.R.A.”.
+                        </Text>
+                        <Text style={styles.p} >
                             Si el neonato está estable y ha cumplido, al menos, 48 horas de vida cuando el nacimiento fue por parto normal; o, 72 horas de vida cuando ha sido por cesárea, proceda a dar el alta de calidad conforme la normativa vigente, y previa evaluación de un médico familiar.
                         </Text>
                         <Text style={styles.h3} >
                             Sugerencias al alta:
                         </Text>
                         <Text style={styles.p} >
-                            I. Oriente a la madre en lactancia materna exclusiva, cuidados del recién nacido en el hogar; en caso de prematurez o peso bajo, orientar de los cuidados extra (ver las páginas 53, 54 y 55 del AIEPI Clínico <Link src="http://186.42.188.158:8090/guias/AIEPI%20CLINICO.%20CUADROS%20DE%20PROCEDIMIENTOS.pdf" style={{ color: '#60a5fa' }}> Link </Link>).
+                            I. Oriente a la madre en lactancia materna exclusiva, cuidados del recién nacido en el hogar; en caso de prematurez o peso bajo, orientar de los cuidados neonatales a la madre o cuidador (ver las páginas 53, 54 y 55 del AIEPI Clínico <Link src="https://www.dropbox.com/scl/fi/jsr59kqtpqr37vdkd9dcv/AIEPI-FINAL_18102019.pdf?rlkey=dm8ns6izu1rp2ggvnuxyt2evh&e=1&st=9bagbzsh&dl=0" style={{ color: '#60a5fa' }}> Link </Link>).
                         </Text>
                         <Text style={styles.p} >
-                            II. Control en no más de 3 días en consulta de Pediatría o Medicina Familiar, previa notificación al establecimiento de salud para atención preferencial.
+                            II. Control en <Text style={styles.pBold}>no más de 3 días</Text> en consulta de Pediatría o Medicina Familiar, previa notificación al establecimiento de salud para atención preferencial.
                         </Text>
                         <Text style={styles.p} >
                             III. Es importante tomar en cuenta que la muestra para tamizaje metabólico neonatal se debe tomar a partir del cuarto hasta los 28 días de vida del recién nacido.
