@@ -42,21 +42,28 @@ const PesoPdf = ({ peso }) => {
                     <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end' }}>
                         <Text style={styles.h4}>{peso} gr.</Text>
                         <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end'}}>
-                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>12</Text>
+                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>14</Text>
                         </View>
                     </View>
                 :(pesoN >= 1000 && pesoN < 1500) ?
                     <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end' }}>
                         <Text style={styles.h4}>{peso} gr.</Text>
                         <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end'}}>
-                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>12</Text>
+                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>13</Text>
                         </View>
                     </View>
-                :(pesoN >= 1500 && pesoN < 2500) ?
+                :(pesoN >= 1500 && pesoN < 2000) ?
                     <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end' }}>
                         <Text style={styles.h4}>{peso} gr.</Text>
                         <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end'}}>
-                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>11</Text>
+                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>12</Text>
+                        </View>
+                    </View>
+                :(pesoN >= 2000 && pesoN < 2500) ?
+                    <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end' }}>
+                        <Text style={styles.h4}>{peso} gr.</Text>
+                        <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end'}}>
+                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>16</Text>
                         </View>
                     </View>
                 :(pesoN >= 2500 && pesoN < 4000) ?
@@ -70,7 +77,7 @@ const PesoPdf = ({ peso }) => {
                     <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end' }}>
                         <Text style={styles.h4}>{peso} gr.</Text>
                         <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end'}}>
-                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>14</Text>
+                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>13</Text>
                         </View>
                     </View>
             }

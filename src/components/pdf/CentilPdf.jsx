@@ -38,7 +38,7 @@ const CentilPdf = ({formularioUno}) => {
                     <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end' }}>
                         <Text style={styles.h4}>{centil}</Text>
                         <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end'}}>
-                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>17</Text>
+                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>18</Text>
                         </View>
                     </View>
                 :(centil === 'Percentil 5 al 95') ?
@@ -52,7 +52,7 @@ const CentilPdf = ({formularioUno}) => {
                     <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end' }}>
                         <Text style={styles.h4}>{centil}</Text>
                         <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end'}}>
-                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>14</Text>
+                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>18</Text>
                         </View>
                     </View>
                 :

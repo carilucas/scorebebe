@@ -38,14 +38,49 @@ const ApgarPdf = ({apgar}) => {
                             <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>35</Text>
                         </View>
                     </View>
-                :( apgarN >= 4 && apgarN <= 6 ) ?
+                :( apgarN === 4 ) ?
+                    <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end' }}>
+                        <Text style={styles.h4}>{apgar} </Text>
+                        <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end'}}>
+                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>30</Text>
+                        </View>
+                    </View>
+                :( apgarN === 5 ) ?
+                    <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end' }}>
+                        <Text style={styles.h4}>{apgar} </Text>
+                        <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end'}}>
+                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>25</Text>
+                        </View>
+                    </View>
+                :( apgarN === 6 ) ?
                     <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end' }}>
                         <Text style={styles.h4}>{apgar} </Text>
                         <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end'}}>
                             <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>19</Text>
                         </View>
                     </View>
-                :(apgarN >= 7 && apgarN <= 10 ) ?
+                :( apgarN === 7 ) ?
+                    <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end' }}>
+                        <Text style={styles.h4}>{apgar} </Text>
+                        <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end'}}>
+                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>18</Text>
+                        </View>
+                    </View>
+                :( apgarN === 8 ) ?
+                    <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end' }}>
+                        <Text style={styles.h4}>{apgar} </Text>
+                        <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end'}}>
+                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>17</Text>
+                        </View>
+                    </View>
+                :( apgarN === 9 ) ?
+                    <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end' }}>
+                        <Text style={styles.h4}>{apgar} </Text>
+                        <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end'}}>
+                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>16</Text>
+                        </View>
+                    </View>
+                :(apgarN === 10 ) ?
                     <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end' }}>
                         <Text style={styles.h4}>{apgar} </Text>
                         <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end'}}>

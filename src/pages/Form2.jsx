@@ -121,16 +121,13 @@ const Form2 = () => {
                             </div>
                         </div>
                         <div className="mb-6 border-b border-gray-70">
-                            <h3 className='text-gray-900 mb-4  text-md max-w-lg font-medium'>
-                                Porcentaje de saturación
-                            </h3>
                             <div className="flex items-center mb-4">
                                 <div className="min-w-6 flex items-center">
                                     <input id="saturacion" type="checkbox" value="" className=" w-6 h-6 text-blue-400 bg-gray-100 border-gray-300 rounded focus:ring-blue-400 dark:focus:ring-blue-400 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                         {...register("formularioDos.saturacion")} />
                                 </div>
                                 <label htmlFor="saturacion" className="ms-2 text-sm text-gray-900 ">
-                                    Menor a 92%
+                                   Porcentaje de saturación Menor a 92%
                                 </label>
                             </div>
                         </div>

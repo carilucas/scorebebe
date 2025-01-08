@@ -63,14 +63,14 @@ const EdadGestacionalPdf = ({ edadGestacional1, edadGestacional2 }) => {
                     <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end' }}>
                         <Text style={styles.h4}>{ `${edadGestacional1}.${edadGestacional2}` }.</Text>
                         <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end'}}>
-                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>12</Text>
+                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>11</Text>
                         </View>
                     </View>
                 :
                     <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end' }}>
                         <Text style={styles.h4}>{ `${edadGestacional1}.${edadGestacional2}` }.</Text>
                         <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection:'row', alignItems:'flex-end'}}>
-                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>14</Text>
+                            <Text style={styles.h3}> Puntaje:</Text> <Text style={styles.h4}>13</Text>
                         </View>
                     </View>
             }
