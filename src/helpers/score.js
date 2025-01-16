@@ -45,7 +45,7 @@ export const score = (formState) => {
         otrosN = 0
     }
 
-    console.log({edadN , pesoN , percentilN , apgarN , tipoPartoN , asfixiaN , infecciosasN , malformacionesN , prematuridadN , otrosN})
+    // console.log({edadN , pesoN , percentilN , apgarN , tipoPartoN , asfixiaN , infecciosasN , malformacionesN , prematuridadN , otrosN})
 
     return edadN + pesoN + percentilN + apgarN + tipoPartoN + asfixiaN + infecciosasN + malformacionesN + prematuridadN + otrosN;
     

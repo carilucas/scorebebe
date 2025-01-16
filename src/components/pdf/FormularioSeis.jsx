@@ -86,7 +86,7 @@ const FormularioSeis = ({ formularioSeis }) => {
                         <View >
                             <Text style={styles.h4} >Trastorno no relacionado con (Asfixia, Malformaciones, Enfermedades relacionadas con la prematuridad, Enfermedades infecciosas). </Text>
                             <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection: 'row', alignItems: 'flex-end' }}>
-                                <Text style={styles.h3}>Puntaje: </Text><Text style={styles.h4}>11</Text>
+                                <Text style={styles.h3}>Puntaje: </Text><Text style={styles.h4}>10</Text>
                             </View>
                         </View>
                     }
