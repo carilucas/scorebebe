@@ -146,14 +146,14 @@ const RiesgoB = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                     <Text style={styles.h1}>Score Bebé y Reporte del Neonato</Text>
                     <View style={{ border: '1px solid #e7e5e4', padding: '20px' }}>
                         <View style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'row', gap: '30px', }}>
-                            <View style={{ flex: '1', display:'flex',justifyContent:'center' }}>
-                                <Text style={[styles.h2, { textAlign:'center'}]}>Score Bebé categoría B</Text>
+                            <View style={{ flex: '1', display: 'flex', justifyContent: 'center' }}>
+                                <Text style={[styles.h2, { textAlign: 'center' }]}>Score Bebé categoría B</Text>
                                 <View>
-                                    <Image src={caution} style={{ display:'block', margin:'auto', width: '105px', height: '100px' }} />
+                                    <Image src={caution} style={{ display: 'block', margin: 'auto', width: '105px', height: '100px' }} />
                                 </View>
                             </View>
-                            <View style={{ flex: '1', display:'flex',justifyContent:'center' }}>
-                                <Text style={[styles.h2, { textAlign:'center'}]} >Score del Neonato</Text>
+                            <View style={{ flex: '1', display: 'flex', justifyContent: 'center' }}>
+                                <Text style={[styles.h2, { textAlign: 'center' }]} >Score del Neonato</Text>
                                 <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <View style={styles.circle} >
                                         <Text style={{ color: '#ca8a04', fontSize: '40px', fontWeight: 'bold' }}>{score}</Text>
@@ -408,7 +408,7 @@ const RiesgoB = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             c) prematurez (ver las páginas 60 y 61 del AIEPI clínico <Link src="https://www.dropbox.com/scl/fi/jsr59kqtpqr37vdkd9dcv/AIEPI-FINAL_18102019.pdf?rlkey=dm8ns6izu1rp2ggvnuxyt2evh&st=9bagbzsh&dl=0">(link)</Link> ).
                         </Text>
                         <Text style={styles.p} >
-                            4. Activar la gestión de la transferencia, considerando el acróstico “R.E.F.I.E.R.A.”
+                            2. Considerar la gestión de la transferencia, considerando el acróstico “R.E.F.I.E.R.A.” de acuerdo con la capacidad resolutiva de su establecimiento de salud:
                         </Text>
                         <Text style={styles.h3} >
                             Normas de estabilización y transporte para la referencia (AIEPI) (1)
