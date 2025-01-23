@@ -387,16 +387,16 @@ const RiesgoB = ({ formularioUno = {}, formularioTres = {}, formularioCuatro = {
                             Descripción del caso:
                         </Text>
                         <Text style={styles.p} >
-                            Neonato de apellido materno <Text style={{ fontWeight: 'bold', fontSize: '15px' }}>{formularioUno.apellidoMaterno}</Text>, es un neonato de Categoría de riesgo B (riesgo moderado); tiene más de un 77% más probabilidades de eventos adversos neonatales antes de los 15 días de vida que los niños de la categoría C (bajo riesgo). Como se encuentra en el segundo nivel, requiere estabilización inmediata:
+                            1. Neonato de apellido materno <Text style={{ fontWeight: 'bold', fontSize: '15px' }}>{formularioUno.apellidoMaterno}</Text>, es un neonato de Categoría de riesgo B (riesgo moderado); tiene más de un 77% más probabilidades de eventos adversos neonatales antes de los 15 días de vida que los niños de la categoría C (bajo riesgo). Como se encuentra en el segundo nivel, requiere estabilización inmediata:
                         </Text>
                         <Text style={styles.p} >
-                            1. Administre Oxígeno si tiene dificultad respiratoria, cianosis generalizada o posible aspiración meconial.
+                            I. Administre Oxígeno si tiene dificultad respiratoria, cianosis generalizada o posible aspiración meconial.
                         </Text>
                         <Text style={styles.p} >
-                            2. Si no existe contraindicación, iniciar lactancia en la primera media hora postparto.
+                            II. Si no existe contraindicación, iniciar lactancia en la primera media hora postparto.
                         </Text>
                         <Text style={styles.p} >
-                            3. Dar antibiótico apropiado en caso de:
+                            III. Dar antibiótico apropiado en caso de:
                         </Text>
                         <Text style={styles.p} >
                             a) rotura de membranas de &gt; 18 horas,
