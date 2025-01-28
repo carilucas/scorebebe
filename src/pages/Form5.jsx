@@ -34,7 +34,7 @@ const Form5 = () => {
         setShowSinComorbilidades(false)
       } else { setValue('formularioCinco.prematuridad', false); }
 
-      if (formState.formularioUno.peso < 2500 ) {
+      if (formState.formularioUno.peso < 2000 ) {
         setValue('formularioCinco.otros', true);
         const otros = document.querySelector('#otros');
         otros.addEventListener('click', e => e.preventDefault());
